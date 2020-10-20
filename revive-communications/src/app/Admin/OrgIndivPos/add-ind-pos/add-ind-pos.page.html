@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Add Organisational Individual<br> Position</ion-title>
+  
+  <ion-item>
+    <ion-label position="floating">Descriptio</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-card>
+    <ion-list>
+      <h4 style="text-align: center; margin: 0.5em">Select Usecase Access</h4>
+      <ion-item *ngFor="let uc of Usecases">
+        <ion-label>{{ uc }}</ion-label>
+        <ion-checkbox slot="start" ></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <h4 style="text-align: center; margin: 0.5em">Select Goal Access</h4>
+      <ion-item *ngFor="let g of Goal">
+        <ion-label>{{ g }}</ion-label>
+        <ion-checkbox slot="start" ></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-button  expand="full" color="primary" routerLink="/view-ind-pos"><ion-icon name="add-outline" style="margin-right: 0.5em;"></ion-icon>Create</ion-button>
+
+</ion-content>

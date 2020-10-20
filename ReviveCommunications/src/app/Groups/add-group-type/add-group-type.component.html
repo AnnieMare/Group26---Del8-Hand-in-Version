@@ -1,0 +1,74 @@
+
+
+ <nb-layout>
+     
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+        <a href="http://localhost:8080/Addgrouptype.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end --> 
+ 
+      <nb-layout-column class="colored-column-basic">
+        <form #GroupType="ngForm" class="form-group" (ngSubmit)="AddGroupTypeForm(GroupType.value)">
+            <nb-card>
+                <nb-card-header>
+                    <h1 style="text-align: center;">Add Group Type</h1>
+                </nb-card-header>
+                <nb-card-body style="align-content: center; text-align: center;" >
+        
+                    <label style="margin-right: 215px;">Group Name:</label>
+                    <input required nbInput shape="rectangle" type="text" id="GroupTypeName" ngModel name="GroupTypeName" #GroupTypeName="ngModel" minlength="2" required>
+        
+                    <div *ngIf="GroupTypeName.invalid && (GroupTypeName.dirty || GroupTypeName.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="GroupTypeName.errors.required">
+                            *Group Type Name is required.
+                        </div>
+                        <div *ngIf="GroupTypeName.errors.minlength"> 
+                            *Group Must have a full Name
+                        </div>
+                    </div>
+                   
+        
+                </nb-card-body>
+                <nb-card-footer style="align-content: center; text-align: center;">
+                    <button nbButton style="margin: 15px;">Submit</button><button nbButton type="button" style="margin: 15px;" routerLink="/ViewGroupType">Back</button>
+                </nb-card-footer>
+            </nb-card>
+        </form>
+        
+        
+        
+        
+
+</nb-layout-column>
+
+</nb-layout>
+

@@ -1,0 +1,75 @@
+
+<nb-layout>    
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="John Doe" title="Engineer"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">    
+        <nb-card>
+            <nb-card-header>
+                <b>Person</b>
+            </nb-card-header>
+        
+            <nb-card-body>
+    
+                              
+                <table id="myTable">
+                <tr class="header">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Date of Birth</th>
+                    <th>Address</th>
+                    <th>Suburb</th>
+                    <th>City</th>
+                    <th>Activation Status ID</th>
+                    <th></th>                
+                </tr>
+                <tr *ngFor="let person of allPerson">
+                    <td>{{person.PersonID}}</td>
+                    <td>{{person.Name}}</td>
+                    <td>{{person.Surname}}</td>
+                    <td>{{person.DateOfBirth}}</td>
+                    <td>{{person.Address}}</td>
+                    <td>{{person.Suburb}}</td>
+                    <td>{{person.City}}</td>
+                    <td>{{person.Activation_Status_ID}}</td>
+                    <td><button nbButton size="small" (click)="setData(person)" routerLink="/UpdatePerson"><nb-icon icon="edit-outline"></nb-icon></button></td>
+                <tr>                
+                </table>
+            </nb-card-body>        
+        </nb-card>
+    </nb-layout-column>
+</nb-layout>    
+  
+  <router-outlet></router-outlet>
+  

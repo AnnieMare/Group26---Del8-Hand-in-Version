@@ -1,0 +1,90 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" ></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+        <nb-card>
+            <nb-card-header>
+                <b> KidsChurch Volunteer Sign-out Confirmation</b>
+            </nb-card-header><br><br>
+            <nb-card-body>
+                <nb-form-field>
+                    <input type="text" nbInput placeholder="Search">
+                    <button nbButton><nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon></button>
+                </nb-form-field>
+                <br><br><br>
+
+                <table>
+                    <tr>
+                        <th><nb-checkbox status="basic"></nb-checkbox></th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Surname</th>
+                        <th style="text-align: center;">Parent</th>
+                        <th style="text-align: center;">Parent Number</th>
+                        <th style="text-align: center;">Group</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <nb-checkbox status="basic"></nb-checkbox>
+                        </td>
+                        <td>Lezanda</td>
+                        <td>van Zyl</td>
+                        <td>Lizette</td>
+                        <td>071 532 4218</td>
+                        <td>Teens</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <nb-checkbox status="basic"></nb-checkbox>
+                        </td>
+                        <td>Christiaan</td>
+                        <td>Swartz</td>
+                        <td>Nico</td>
+                        <td>086 364 2487</td>
+                        <td>Teens</td>
+                    </tr>
+                </table>
+                <br><br><br>
+                <button nbButton status="basic" style="float: right; margin-left: 20px;" routerLink="/VolunteerChildren">Cancel</button>
+                <button nbButton status="basic" style="float: right;" (click)="open2()">Sign-out</button>
+                
+            </nb-card-body>
+
+        </nb-card>        
+    
+    </nb-layout-column>
+    
+</nb-layout>
+
+
+

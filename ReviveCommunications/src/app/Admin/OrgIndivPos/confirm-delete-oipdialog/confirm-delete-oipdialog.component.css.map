@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "confirm-delete-oipdialog.component.scss"
+    ],
+    "names": [],
+    "file": "confirm-delete-oipdialog.component.css"
+}

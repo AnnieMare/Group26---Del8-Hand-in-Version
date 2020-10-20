@@ -1,0 +1,90 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+      <form  #ReportStructureGrowth="ngForm" class="form-group" (ngSubmit)="AddStructureGrowthform(ReportStructureGrowth.value)">
+        <!-- <input type="text" hidden name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" > -->
+
+        <nb-card>
+          <nb-card-header>
+            <h3>Report on Structure growth</h3>
+            <a href="http://localhost:8080/Goalfeedback.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+          </nb-card-header>
+          <nb-card-body>
+
+            <label style="margin-right: 250px;">Date:</label>
+                  <input type="date"nbInput [max]="max" shape="rectangle" name="Date" ngModel #Date="ngModel"  required><br><br>
+
+                  <div *ngIf="Date.invalid && (Date.dirty || Date.touched)"
+                      style="color:tomato; float: right">
+                      <div *ngIf="Date.errors.required">
+                          *Date is required.
+                      </div>
+                  </div>
+
+          <label style="margin-right: 210px;">Members:</label>
+                  <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="Member" ngModel #Member="ngModel" required><br>
+
+                  <div *ngIf="Member.invalid && (Member.dirty || Member.touched)"
+                      style="color:tomato; float: right">
+                      <div *ngIf="Member.errors.required">
+                          *Member is required.
+                      </div>
+                  </div>
+
+
+          <label style="margin-right: 180px;">Structure Name</label>
+          <input type="text" nbInput style="width: 200px;"  shape="rectangle" name="StructureName" ngModel #StructureName="ngModel"  required><br><br>
+          <div *ngIf="StructureName.invalid && (StructureName.dirty || StructureName.touched)"
+          style="color:tomato; float: right">
+          <div *ngIf="StructureName.errors.required">
+              *Structure Name is required.
+          </div>
+      </div>
+
+
+          </nb-card-body>
+
+          <nb-card-footer>
+            <button class="next-button" [disabled]= "ReportStructureGrowth.invalid" nbButton>Submit</button>
+            <button class="next-button" type="button" nbButton style="margin-right: 5px;" routerLink="/ViewOrgStructPos" >Back</button>
+
+          </nb-card-footer>
+        </nb-card>
+
+
+      </form>
+    </nb-layout-column>
+</nb-layout>

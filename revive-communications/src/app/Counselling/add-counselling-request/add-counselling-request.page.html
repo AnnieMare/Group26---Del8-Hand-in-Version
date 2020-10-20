@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+  <a href="http://localhost:8080/Addcounsellingrequest.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+  
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="AddCounsellingForm(CounsellingRequest.value)">
+    <div style="align-content: center; text-align:center;">
+      <h5>Add Counselling Request</h5>
+    </div>
+    <div>
+      <ion-label>Counselling Description:</ion-label><br>
+      <ion-input name="CounsellingDescription" id="CounsellingDescription" [(ngModel)]="CounsellingDescription" minlength="10"></ion-input>
+
+    </div>
+    <!--<div *ngIf="CounsellingDescription.invalid && (CounsellingDescription.dirty || CounsellingDescription.touched)"
+      style="color:tomato;float: right">
+      <div *ngIf="CounsellingDescription.errors.required">
+          *Counselling Description is required.
+      </div>
+      <div *ngIf="CounsellingDescription.errors.minlength"> 
+        *Must have a full description
+      </div>
+    </div>-->
+    <div style="align-content: center; text-align: center;">
+      <ion-button type="submit">Submit</ion-button>
+    </div>
+    
+
+  </form>
+
+</ion-content>

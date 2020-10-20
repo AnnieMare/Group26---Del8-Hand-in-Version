@@ -1,0 +1,51 @@
+<ion-header>
+  <!-- NB NB-->
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button> 
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary" style="height: 45px;">Member Follow-up</ion-title>
+  </ion-toolbar>
+  <a href="http://localhost:8080/Follow-Up.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+    
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngFor="let mem of MemberView" value="mem">
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option (click)="callPerson(mem.Number, $event)" color="success" expandable>
+          Call
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>
+          ID:{{mem.PersonID}}<br>
+          Name:{{mem.Name}}<br>
+          Surname:{{mem.Surname}}<br>
+          Number:{{mem.Number}}<br>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="popOff(mem, $event)"color="secondary">
+          Completed
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </div>
+  </ion-list>
+
+</ion-content>

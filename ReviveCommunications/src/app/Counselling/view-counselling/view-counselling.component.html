@@ -1,0 +1,73 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+        <a href="http://localhost:8080/Viewcounsellingrequest.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+
+<form [formGroup]="CounsellingView">
+
+    <h1 style="text-align: center;">Counselling</h1>
+    <div class="row">
+        <div class="left">
+            <button nbButton style="margin: 15px;" routerLink="/AddCounselling">Add Counselling</button>
+        </div>
+    </div>
+    <br>
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>Counsell ID</th>
+                <th>Person ID</th>
+                <th>Description</th>
+                <th>Member Number</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let con of CounsellingView">
+            <tr>
+                <td>{{con.CounsellingRequestID}}</td>
+                <td>{{con.PersonID}}</td>
+                <td>{{con.CounsellingDescription}}</td>
+                <td>{{con.PhoneNumber}}</td>
+                <td><button nbButton  routerLink="/ViewCounsellingRequest/{{con.CounsellingRequestID}}">View Counselling</button></td>
+                <td ><button nbButton  type="button"  (click)="onRemove(con)">Resolve</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</form></nb-layout-column>
+</nb-layout>

@@ -1,0 +1,32 @@
+nb-card {
+  width: 90%;
+   height: fit-content;
+   margin: 0 auto 2rem;
+   nb-list{
+     height: fit-content;
+     a{
+       text-decoration: none;
+       cursor: pointer;
+     }
+   }
+ }
+ input, button {
+   margin-right: 1rem;
+   margin-bottom: 1rem;
+ }
+
+ .prev-button {
+   margin-right: 1rem;
+ }
+ .x{
+   //margin-top: 1em;
+   margin-bottom: 1em;
+
+ }
+
+ textarea{
+   height: 30vh;
+ }
+
+
+

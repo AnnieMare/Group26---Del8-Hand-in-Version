@@ -1,0 +1,80 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+        <nb-card>
+            <nb-card-header><b>Approve Member</b>
+              <a href="http://localhost:8080/ApproveMember.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a></nb-card-header>
+            <nb-card-body style="height: 50px;">
+              <table style="border: white;">
+                <tbody>
+                  <tr>
+                  
+                    <td style="width: 50%;">
+                      <!--<label >Total Approvals:</label><label style="margin: 15px;">{{TotalApprovals}}</label><br><br>-->
+                      <!-- <label >Completed Number of Approvals:</label><label style="margin: 5px;">{{MembersProgress.Completed}}</label><br><br> -->
+                      <label >Number of approvals remaining:</label><label style="margin: 15px;">{{MembersProgress.Remaining}}</label><br>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </nb-card-body>
+          </nb-card>
+        <nb-card>
+            <nb-card-body>
+                <div *ngIf="NoApprovalsLeft != null" style="text-align: center; color: teal; margin-top: 25px; margin-bottom: 25px;">
+                    <p>{{NoApprovalsLeft}}</p>
+                </div>
+                <table *ngIf="NoApprovalsLeft == null">
+                    <tr>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Surname</th>
+                        <th style="text-align: center;">Approve</th>
+                    </tr>
+                    <tr *ngFor="let member of MemberApprove">
+                        <td>{{member.Name}} <input value="{{member.PersonID}}" hidden></td>
+                        <td>{{member.Surname}}</td>
+                        <td>
+                            <input type="submit" nbButton value="Approve" (click)="onSubmit(member)" fullWidth> 
+                        </td>
+                    <tr>                
+                </table>
+                <br>
+                <button nbButton style="float: right;" routerLink="/Members">Cancel</button>
+            </nb-card-body>
+        
+        </nb-card>
+    </nb-layout-column>
+
+</nb-layout>

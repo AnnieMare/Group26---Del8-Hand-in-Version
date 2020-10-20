@@ -1,0 +1,127 @@
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+  <!-- Content on page START -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <nb-layout>
+
+      <nb-layout-column class="colored-column-basic">
+    <!-- Content on page START -->
+    <form #Overview="ngForm" (ngSubmit)="onClick(Overview.value)" >
+
+    <nb-card>
+        <nb-card-header>
+          <h1>Structure Discipleship Report  </h1>
+          <a href="http://localhost:8080/Reporting.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+        </nb-card-header>
+      <nb-card-body>
+        <table>
+
+          <tr>
+
+            <!-- <td>
+              <label>Structure</label>
+              <nb-select [(ngModel)]="selectedStructure" name="selectedStructure" >
+                <nb-option *ngFor="let s of Structures" [value]="s" >{{s.Description}}</nb-option>
+
+              </nb-select>
+            </td> -->
+            <td>
+              <label>Date</label>
+              <input nbInput [nbDatepicker]="firstDate"  name='StartDate' required  [(ngModel)]="StartDate">
+              <nb-datepicker  [max]="max" #firstDate></nb-datepicker>
+            </td>
+          <td>
+              <label>To </label>
+              <input nbInput  [nbDatepicker]="secondDate" name='EndDate' required [(ngModel)]="EndDate">
+              <nb-datepicker  [max]="max" #secondDate></nb-datepicker>
+
+          </td>
+          <td>
+            <button nbButton type="submit" [disabled]="Overview.invalid" style="background: teal;color: white; border-color: teal;"><nb-icon icon="file-text-outline"></nb-icon> Generate</button>
+          </td>
+          </tr>
+        </table>
+
+          <div style="text-align: left; background-color: teal;"><label><b>All Discipleships
+
+
+          </b></label></div>
+         <br>
+          <table class="table">
+              <thead>
+                <th>Discipleship</th>
+                <th>Attended</th>
+              </thead>
+              <tbody>
+                  <tr *ngFor='let d of disc, let i=index'>
+                    <td>{{d}}</td>
+                    <td>{{Attended[i]}}</td>
+
+
+                  </tr>
+                  <!-- <tr>
+                      <td>Baptised</td>
+                      <td>20</td>
+
+                  </tr>
+                  <tr>
+                      <td>Spiritual Gifts</td>
+                      <td>15</td>
+
+                  </tr> -->
+              </tbody>
+          </table>
+
+      </nb-card-body>
+    </nb-card>
+  </form>
+    <!-- Content on page END -->
+      </nb-layout-column>
+    </nb-layout>
+
+
+
+
+
+  <!-- Content on page END -->
+    </nb-layout-column>
+  </nb-layout>
+
+
+

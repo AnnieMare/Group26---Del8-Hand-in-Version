@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form  #ReportStructureGrowth="ngForm" class="form-group" (ngSubmit)="AddStructureGrowthform(ReportStructureGrowth.value)">
+
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Structure Growth Feedback</ion-title>
+
+
+  <ion-card>
+    <ion-item>
+      <ion-label  position="floating">Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Select Date"  name="Date" ngModel #Date="ngModel"  required></ion-datetime>
+  
+    <div *ngIf="Date.invalid && (Date.dirty || Date.touched)"
+    style="color:tomato; float: right">
+    <div *ngIf="Date.errors.required">
+        *Date is required.
+    </div>
+</div>
+  </ion-item>
+
+    <ion-item>
+    <ion-label  position="floating">Members</ion-label>
+    <ion-input type="number"  name="Member" ngModel #Member="ngModel" required></ion-input>
+    <div *ngIf="Member.invalid && (Member.dirty || Member.touched)"
+    style="color:tomato; float: right">
+    <div *ngIf="Member.errors.required">
+        *Members is required.
+    </div>
+</div>
+  </ion-item>
+
+    <ion-item>
+    <ion-label   position="floating">Structure Name</ion-label>
+    <ion-input name="StructureName" ngModel #StructureName="ngModel"  required></ion-input>
+    
+    <div *ngIf="StructureName.invalid && (StructureName.dirty || StructureName.touched)"
+    style="color:tomato; float: right">
+    <div *ngIf="StructureName.errors.required">
+        *Structure Name is required.
+    </div>
+ 
+</div>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label style="margin-right: 110px;">Goal ID:</ion-label>
+    <ion-input type="number"  placeholder="eg. 1" name="StructureGrowthGoalID" ngModel #StructureGrowthGoalID="ngModel"  required></ion-input>
+
+
+  </ion-item>
+  <div *ngIf="StructureGrowthGoalID.invalid && (StructureGrowthGoalID.dirty || StructureGrowthGoalID.touched)"
+  style="color:tomato; float: right">
+  <div *ngIf="StructureGrowthGoalID.errors.required">
+      *Goal ID is required.
+  </div>
+
+</div>
+
+  <ion-item>
+    
+    <ion-label style="margin-right: 60px;">Individual Position:</ion-label>
+    <ion-input type="number" placeholder="eg. 1"name="OrgIndivPosID" ngModel #OrgIndivPosID="ngModel"  required></ion-input>
+
+  </ion-item>
+
+  <div *ngIf="OrgIndivPosID.invalid && (OrgIndivPosID.dirty || OrgIndivPosID.touched)"
+  style="color:tomato; float: right">
+  <div *ngIf="OrgIndivPosID.errors.required">
+      *OrgIndivPosID is required.
+  </div>
+  <div *ngIf="OrgIndivPosID.errors.minlength">
+      *OrgIndivPosID must be full
+  </div>
+</div>
+ <ion-button  expand="block" type="submit" [disabled]= "ReportStructureGrowth.invalid"><ion-icon name="checkmark-circle-outline" ></ion-icon>Submit</ion-button>
+ <ion-button  expand="block" routerLink="/">Back</ion-button>
+
+  </ion-card>
+</form>
+</ion-content>

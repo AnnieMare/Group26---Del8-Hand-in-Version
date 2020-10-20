@@ -1,0 +1,133 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+
+
+      </nb-layout-header>
+
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+        <form #ReportZoneChurchAtt="ngForm" class="form-group" (ngSubmit)="AddZoneChurchAttform(ReportZoneChurchAtt.value)">
+          <input type="text" hidden name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" >
+
+          <nb-card>
+                <nb-card-header>
+                    <h1>Report on Zone Church Attendance</h1>
+                    <a href="http://localhost:8080/Goalfeedback.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+                </nb-card-header>
+                <nb-card-body>
+                    <label style="margin-right: 260px;">Date:</label>
+                    <input type="date"nbInput  shape="rectangle" name="Date" ngModel #Date="ngModel"  required><br><br>
+
+                    <div *ngIf="Date.invalid && (Date.dirty || Date.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Date.errors.required">
+                            *Date is required.
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 215px;">Description:</label>
+                    <input type="text" style="width: 200px;" nbInput  shape="rectangle" name="Description" ngModel #Description="ngModel" minlength="2" required><br><br>
+
+                    <div *ngIf="Description.invalid && (Description.dirty || Description.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Description.errors.required">
+                            *Description is required.
+                        </div>
+                        <div *ngIf="Description.errors.minlength">
+                            *Description must be full
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 230px;">Members:</label>
+                    <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" name="Member" ngModel #Member="ngModel"  required><br><br>
+
+                    <div *ngIf="Member.invalid && (Member.dirty || Member.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Member.errors.required">
+                            *Member is required.
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 245px;">Leader:</label>
+                    <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" name="Leader" ngModel #Leader="ngModel"  required><br><br>
+
+                    <div *ngIf="Leader.invalid && (Leader.dirty || Leader.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Leader.errors.required">
+                            *Leader is required.
+                        </div>
+                        <div *ngIf="Leader.errors.minlength">
+                            *Leader must be full
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 240px;">Visitors:</label>
+                    <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" name="Visitors" ngModel #Visitors="ngModel"  required><br><br>
+
+                    <div *ngIf="Visitors.invalid && (Visitors.dirty || Visitors.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Visitors.errors.required">
+                            *Visitors is required.
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 175px;">First time Visitors:</label>
+                    <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" name="FirstTimeVisitors" ngModel #FirstTimeVisitors="ngModel"  required><br><br>
+
+                    <div *ngIf="FirstTimeVisitors.invalid && (FirstTimeVisitors.dirty || FirstTimeVisitors.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="FirstTimeVisitors.errors.required">
+                            *FirstTimeVisitors is required.
+                        </div>
+                    </div>
+
+                    <label style="margin-right: 220px;">Salvations:</label>
+                    <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" name="Salvations" ngModel #Salvations="ngModel"  required><br><br>
+
+                    <div *ngIf="Salvations.invalid && (Salvations.dirty || Salvations.touched)"
+                        style="color:tomato; float: right">
+                        <div *ngIf="Salvations.errors.required">
+                            *Salvations is required.
+                        </div>
+                    </div>
+
+
+
+                </nb-card-body>
+                <nb-card-footer>
+                    <button  nbButton  style="margin-right: 5px;"  [disabled]= "ReportZoneChurchAtt.invalid">Submit</button>
+                    <button nbButton type="button" style="margin-right: 5px;">Back</button>
+                </nb-card-footer>
+            </nb-card>
+        </form>
+
+
+</nb-layout-column>
+</nb-layout>

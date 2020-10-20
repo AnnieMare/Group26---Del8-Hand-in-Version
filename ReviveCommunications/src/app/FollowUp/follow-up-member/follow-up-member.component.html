@@ -1,0 +1,63 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+        <a href="http://localhost:8080/Follow-Up.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+
+<form [formGroup]="MemberView">
+
+    <h1 style="text-align: center;">Member Follow-up</h1>
+    <br>
+    <button nbButton routerLink="/Home"> Back</button>
+    <table class ="table">
+        <thead>
+            <tr>
+                <th>Person ID:</th>
+                <th>Member Name:</th>
+                <th>Member Number:</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let mem of MemberView">
+            <tr>
+                <td>{{mem.PersonID}}</td>
+                <td>{{mem.Name}}</td>
+                <td>{{mem.Number}}</td>
+                <td ><button nbButton  type="button" (click)="popOff(mem)">Complete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+</form></nb-layout-column>
+</nb-layout>

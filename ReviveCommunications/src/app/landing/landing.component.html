@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>َAnimated Login Form</title>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: transparent;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover:not(.active) {
+        background: #191919;
+        opacity: 0.2;
+      }
+      </style>
+  </head>
+  <body>
+    <ul style="text-align: right;">
+      <li><a (click)="Login()">Login</a></li>
+      <li><a href="/RegisterPerson">Register</a></li>
+      <li><a href="/RequestReactivate">Re-activate</a></li>
+  </ul>
+  <form [formGroup]="loginperson" class="box" action="index.html" (ngSubmit)="LoginPerson(loginperson.value)">
+  <img src="assets/crc-logo-menu-retina-white.png" style="width: 100px; height: 100px;">
+  <h1>Login
+    <a href="http://localhost:8080/Login.html"><nb-icon style="float: right; color: white; font-size: large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+  </h1>
+  <div class="form__field">
+    <input type="text" placeholder="Username" class="form-control" name="Username" id="Username"   formControlName="Username"  required>
+  </div>
+  <b><div *ngIf="loginperson.controls['Username'].invalid && (loginperson.controls['Username'].dirty || loginperson.controls['Username'].touched)" class="alert alert-danger">
+    <div *ngIf="loginperson.controls['Username'].errors.required" style="color: red; ">
+    **Username is required.
+  </div>
+</div></b>
+
+
+<div class="form__field">
+  <input type="password" placeholder="Password" class="form-control" name="Password"  formControlName="Password"  required>
+</div>
+<b><div *ngIf="loginperson.controls['Password'].invalid && (loginperson.controls['Password'].dirty || loginperson.controls['Password'].touched)" class="alert alert-danger">
+  <div *ngIf="loginperson.controls['Password'].errors.required" style="color: red; ">
+    **Password is required.
+</div>
+</div>
+</b>
+<div class="form__field">
+  <input type="submit"  [disabled]="!loginperson.valid"value="Login"  >
+  <p>{{errorMessage}}</p>
+</div>  <br>
+  <label style="color: rgb(2, 184, 184);">Don't remember your password? Click here.</label>
+  <input type="button" value="Reset password" (click)="resetPassword()">
+</form>
+<br>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form  #ReportOnNMO="ngForm" class="form-group" (ngSubmit)="AddNMOform(ReportOnNMO.value)">
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">New Member Orientation<br> Feedback</ion-title>
+
+  <ion-card>
+    <ion-item>
+      <ion-label  position="floating">Date</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" ngModel #Date="ngModel" name="Date" required  placeholder="Select Date"></ion-datetime>
+  </ion-item>
+  <div *ngIf="Date.invalid && (Date.dirty || Date.touched)"
+  style="color:tomato; float: right">
+  <div *ngIf="Date.errors.required">
+      *Date is required.
+  </div>
+</div>
+    <ion-item>
+    <ion-label  position="floating">Monthly Total</ion-label>
+    <ion-input type="number" name="MonthTotal" ngModel #MonthTotal="ngModel"  required></ion-input>
+  </ion-item>
+  
+  <div *ngIf="MonthTotal.invalid && (MonthTotal.dirty || MonthTotal.touched)"
+  style="color:tomato; float: right">
+  <div *ngIf="MonthTotal.errors.required">
+      *Month Total is required.
+  </div>
+</div>
+
+<ion-item>
+<ion-label style="margin-right: 70px;">Goal ID</ion-label>
+<ion-input type="number"  placeholder="eg. 1" name="NMOGoalID" ngModel #NMOGoalID="ngModel"  required></ion-input>
+</ion-item>
+
+<div *ngIf="NMOGoalID.invalid && (NMOGoalID.dirty || NMOGoalID.touched)"
+    style="color:tomato; float: right">
+    <div *ngIf="NMOGoalID.errors.required">
+        *GoalID is required.
+    </div>
+</div>
+
+<ion-item>
+  <ion-label style="margin-right:60px;">Indiv Pos:</ion-label>
+  <ion-input type="number"placeholder="eg. 1"name="OrgIndivPosID" ngModel #OrgIndivPosID="ngModel"  required></ion-input>
+
+  <div *ngIf="OrgIndivPosID.invalid && (OrgIndivPosID.dirty || OrgIndivPosID.touched)"
+      style="color:tomato; float: right">
+      <div *ngIf="OrgIndivPosID.errors.required">
+          *OrgIndivPosID is required.
+      </div>
+      <div *ngIf="OrgIndivPosID.errors.minlength">
+          *OrgIndivPosID must be full
+      </div>
+  </div>
+</ion-item>
+
+ <ion-button  expand="block" type="submit"  [disabled]= "ReportOnNMO.invalid"><ion-icon name="checkmark-circle-outline" ></ion-icon>Submit</ion-button>
+ <ion-button  expand="block" routerLink="/">Back</ion-button>
+
+
+  </ion-card>
+</form>
+</ion-content>

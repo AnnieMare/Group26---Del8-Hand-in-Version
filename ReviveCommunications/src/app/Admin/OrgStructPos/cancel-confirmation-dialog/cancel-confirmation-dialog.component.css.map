@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "cancel-confirmation-dialog.component.scss"
+    ],
+    "names": [],
+    "file": "cancel-confirmation-dialog.component.css"
+}

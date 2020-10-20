@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+  <a href="http://localhost:8080/Requesttojoinorganisationalgroup.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+            
+</ion-header>
+
+<ion-content>
+  <h1 style="text-align: center;">Join us!</h1>
+  <form (ngSubmit)="onSubmit(groupChoice.value)">
+  <div>
+    <h2 style="text-align: center;">You can join up to 3 groups!</h2>
+  </div>
+
+  <div style="align-content: center; text-align: center;">
+    <ion-label>My Zone pastor:</ion-label>
+    <ion-input id="ZonePastor" name="ZonePastor" ngModel #ZonePastor="ngModel"></ion-input>
+    <ion-label>My Homecell:</ion-label>
+    <ion-input id="Homecell" name="Homecell" ngModel #Homecell="ngModel"></ion-input>
+    <ion-label>My Spiritual gift:</ion-label>
+    <ion-input id="SpiritualGiftTestSession" ngModel name="SpiritualGiftTestSession" #SpiritualGiftTestSession="ngModel"></ion-input>
+    <ion-label>My best gift:</ion-label>
+    <ion-input id="HighestSpiritualGifts" ngModel name="HighestSpiritualGifts" #HighestSpiritualGifts="ngModel"></ion-input>
+  </div>
+
+  <div style="align-content: center; text-align: center;">
+    <ion-label>Group 1:</ion-label>
+              <ion-select placeholder="Group 1" name="Group1" [(ngModel)]="selectedGroup1">
+                <ion-select-option *ngFor="let g of Groups" value="g">{{g.GroupTypeName}}</ion-select-option>
+              </ion-select>
+
+              <ion-label>Group 2:</ion-label>
+              <ion-select placeholder="Group 2" name="Group2" [(ngModel)]="selectedGroup2">
+                <ion-select-option *ngFor="let g of Groups" value="g">{{g.GroupTypeName}}</ion-select-option>
+              </ion-select>
+
+              <ion-label>Group 3:</ion-label>
+              <ion-select placeholder="Group 3" name="Group3" [(ngModel)]="selectedGroup3">
+                <ion-select-option *ngFor="let g of Groups" value="g">{{g.GroupTypeName}}</ion-select-option>
+              </ion-select>
+  </div>
+  <div style="align-content: center; text-align: center;">
+    <ion-button type="submit">Join</ion-button>
+    
+    <ion-button routerLink="/home">Cancel</ion-button>
+  </div>
+</form>
+</ion-content>

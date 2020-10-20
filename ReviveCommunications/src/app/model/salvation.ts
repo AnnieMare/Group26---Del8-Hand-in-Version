@@ -1,0 +1,31 @@
+export class ISalvation {
+SalID: number;
+Date: string;
+AlterWorker: string;
+Name: string;
+Surname: string;
+Age: string;
+EmploymentStatus: string;
+MaritialStatus: string;
+ResidentialAddress: string;
+Suburb: string;
+City: string;
+HomeTelNo: string;
+WorkTelNo: string;
+Cellphone: string;
+Email: string;
+Invited: boolean;
+NameSurnameInvite: string;
+HomecellLeader: string;
+ZonePastor: string;
+StudyAddress: string;
+ParentGuardianCell: string;
+PrayerRequest:string;
+SchoolLevel: boolean;
+NameofSchool: string;
+Grade: number;
+StudyYear: number;
+Institution: string;
+FollowedUp: boolean;
+NoAnswer: boolean;
+}

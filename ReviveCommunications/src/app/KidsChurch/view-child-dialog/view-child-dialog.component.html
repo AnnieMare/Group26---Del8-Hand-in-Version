@@ -1,0 +1,23 @@
+
+<nb-card>
+    <form [formGroup]="updateChild">
+        <nb-card-header>View Child</nb-card-header>
+        <br><br>
+        <nb-card-body>
+            
+            <label style="margin-right: 138px;">Child Name:</label>
+            <input type="text" nbInput formControlName="Name" placeholder="Child Name"  style="margin-right: 150px;"><input type="text" nbInput formControlName="ChildID" style="margin-right: 150px;" hiiden>
+            <br><br>
+
+            <label style="margin-right: 118px;">Child Surname:</label>
+            <input type="text" nbInput formControlName="Surname" placeholder="Child Surname"  style="margin-right: 150px;">
+            <br><br>
+
+            <label style="margin-right: 133px;">Date of Birth:</label>  
+            <input type="text" nbInput formControlName="DateOfBirth" shape="rectangle" required>
+            <br><br><br>
+            <button nbButton status="basic" routerLink="/KidsChurch">Done</button>
+        </nb-card-body>
+    </form>
+</nb-card>    
+

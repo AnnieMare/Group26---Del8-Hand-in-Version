@@ -1,0 +1,21 @@
+button{
+  margin:1em;
+}
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+.row {margin: 0 -5px;}
+
+nb-card{
+  margin: 1em;
+}
+nb-list{
+  border: 0px;
+  nb-list-item{
+    border: 0px;
+
+  }
+}
+

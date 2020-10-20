@@ -1,0 +1,79 @@
+<nb-layout>
+  
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+   
+
+    <nb-layout-column>
+        <form [formGroup]="updateGroup" (ngSubmit)="onSubmit(updateGroup.value)">
+        <nb-card>
+           
+                <nb-card-header>Update Group
+                  <a href="http://localhost:8080/MaintainOrganisationalGroup.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+                </nb-card-header>
+                <nb-card-body>
+                    <p>Please complete all the required fields</p>
+                    <br>
+                    <input type="text" nbInput formControlName="OrgGroupID" hidden>
+                    
+                    <label>Select a group:</label>
+                    <nb-select  formControlName="GroupTypeID" placeholder="Select a Group" required>
+                        <nb-option *ngFor="let grouptype of grouptypes" [value]="grouptype.GroupTypeID">{{grouptype.GroupTypeName}}</nb-option>
+                    </nb-select>
+                    <br><br>
+                    
+                    <label style="margin-right: 30px;">Group Name:</label>
+                    <input type="text"  formControlName="Description" nbInput placeholder="Group Name"  style="margin-right: 150px;" required>
+                    <br><br>
+
+                    <label style="margin-right: 60px;">Address:</label>
+                    <input type="text"  formControlName="Address" nbInput placeholder="Address"  style="margin-right: 150px;">
+                    <br><br>
+                    <label style="margin-right: 68px;">Suburb:</label>
+                    <nb-select   formControlName="SuburbID" placeholder="Suburb" >
+                        <nb-option *ngFor="let s of suburbs" [value]="s.SuburbID">{{s.SuburbName}}</nb-option>
+                    </nb-select>
+                    <br><br>
+                    
+                    <label style="margin-right: 87px;">Size:</label>
+                    <input type="number"  formControlName="Size" nbInput placeholder="Members" required>
+                    <br><br>
+                    <button nbButton status="basic" style="margin-right: 30px;">Update Group</button>
+                    <button nbButton status="basic" routerLink="/Groups">Cancel</button>
+                </nb-card-body>
+        
+        </nb-card>  
+      </form>
+    </nb-layout-column>
+</nb-layout>
+

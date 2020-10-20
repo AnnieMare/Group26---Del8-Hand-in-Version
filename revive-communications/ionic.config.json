@@ -1,0 +1,8 @@
+{
+  "name": "Revive Communications",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

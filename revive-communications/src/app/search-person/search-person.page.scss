@@ -1,0 +1,21 @@
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.header .col {
+    background-color:#323259;
+}
+
+.col {
+    border: solid 1px #6a6a94;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+.col:last-child {
+    border-right: solid 1px #6a6a94;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px #6a6a94;
+}

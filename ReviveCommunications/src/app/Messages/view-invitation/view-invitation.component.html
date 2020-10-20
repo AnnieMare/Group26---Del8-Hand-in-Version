@@ -1,0 +1,63 @@
+
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+<h3>Invitations</h3>
+<a href="http://localhost:8080/ViewInvitation.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+<div>
+  <!-- Message 1 -->
+
+  <nb-card *ngFor="let a of Invitation">
+
+    <nb-card-header>{{a.Summary}}</nb-card-header>
+    <nb-card-body>
+      <strong>Event Date: {{a.InvitationDate}}</strong><br>
+      <strong>Event Time: {{a.StartTime}} - {{a.EndTime}}</strong><br>
+
+       {{a.InvitationDetail}}
+
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton small (click)="onDismiss(a)">Dismiss</button>
+    </nb-card-footer>
+
+
+  </nb-card>
+
+
+</div>
+</nb-layout-column>
+</nb-layout>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAA;EACD,MAAM,EAAC,KACX;CAAC",
+    "sources": [
+        "register-person.component.scss"
+    ],
+    "names": [],
+    "file": "register-person.component.css"
+}

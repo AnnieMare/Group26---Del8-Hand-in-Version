@@ -1,0 +1,78 @@
+ 
+<nb-layout>
+ 
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setPData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+  
+
+    <nb-layout-column class="colored-column-basic">
+        <nb-card>
+        <nb-card-header>
+            <b>Groups</b>            
+            <a href="http://localhost:8080/OrganisationalGroup.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+        </nb-card-header>
+        <nb-card-body >
+            <button *ngIf="enable_buttons" nbButton style="background-color: transparent; border: none; color:white" routerLink="/AddGroup"><nb-icon id="newgroup" icon="plus-outline"></nb-icon>Add Group</button>
+            <button nbButton style="background-color: transparent; border: none; color:white" routerLink="/GroupTransfer/{{Person.PersonID}}"><nb-icon icon="swap-outline"></nb-icon>Transfer Groups</button>
+            <button nbButton style="background-color: transparent; border: none; color:white" routerLink="/JoinGroup"><nb-icon icon="home-outline" ></nb-icon>Serve</button>
+            <br>
+            <table>
+                <tr>
+                    <th>Group Name</th>
+                    <th *ngIf="enable_buttons">View Group</th>
+                    <th *ngIf="enable_buttons"></th>
+                </tr>
+
+                <tr *ngFor="let group of myGroups">
+                    <td>{{group.Description}} <input value="{{group.OrgGroupID}}" hidden></td>
+                    <td *ngIf="enable_buttons">
+                        <button nbButton style="background-color: transparent; border: none; color:white" (click)="open()" (click)="setData(group)"><nb-icon icon="eye-outline"></nb-icon>View</button>
+                    </td>
+                    <td *ngIf="enable_buttons">
+                        <button nbButton style="background-color: transparent; border: none; color:white" routerLink="/MaintainGroup" (click)="setData(group)"><nb-icon icon="edit-outline"></nb-icon>Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            
+        </nb-card-body>
+        </nb-card>
+    </nb-layout-column>
+    
+<nb-layout-footer fixed>
+    <img src="https://church.crc.org.za/assets/img/brand/black-with-text.png" style=" height: 30px;">
+    </nb-layout-footer>
+</nb-layout>
+
+
+

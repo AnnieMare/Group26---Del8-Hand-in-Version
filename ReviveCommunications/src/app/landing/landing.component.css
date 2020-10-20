@@ -1,0 +1,163 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, right top, from(#6c4bef), to(rgba(0, 0, 0, 0.73))), url("https://www.facebook.com/crctheplacetobe/photos/a.1359358887532842/1359359437532787/?type=3&eid=ARC23dkC_Pujbc7YuZppSEI2Qi-mxzg5cRj7nxJEiJN0dl8pBNJeNHPmVvxuXOE-QO_6rdsEWfiX4HrP&__xts__%5B0%5D=68.ARCCuAMG6L8AGgzbcg0iQvNcMizj8GXXaHlBp1TWI0NQiwlvdthkgmhrW0Cui32wvKm1GAwVbp279SyCqVCShA6NqUC_qtPM9_qzJII60qD6ZPCELZErE8zNafXiVFRgkPQ_RPqdKgDT-dL85VmlA6iIqsu1y7PEBkicUtqeLOcvvzNOmkste8mysCs5TjwBbmN8Elq1t5sz3WGYhEhCD_IphKxJ0eZy0QGLa6rXkl8x6WWrnsAltXevGjF0TdKbMwu4lJEMGsDKGrfourmj7Muq0KKmQRbDKJCeci5aPSlhfHwSksdmqwTIpZHtQYWgk0kk&__tn__=EHH-R");
+  background-image: linear-gradient(to right, #6c4bef, rgba(0, 0, 0, 0.73)), url("https://www.facebook.com/crctheplacetobe/photos/a.1359358887532842/1359359437532787/?type=3&eid=ARC23dkC_Pujbc7YuZppSEI2Qi-mxzg5cRj7nxJEiJN0dl8pBNJeNHPmVvxuXOE-QO_6rdsEWfiX4HrP&__xts__%5B0%5D=68.ARCCuAMG6L8AGgzbcg0iQvNcMizj8GXXaHlBp1TWI0NQiwlvdthkgmhrW0Cui32wvKm1GAwVbp279SyCqVCShA6NqUC_qtPM9_qzJII60qD6ZPCELZErE8zNafXiVFRgkPQ_RPqdKgDT-dL85VmlA6iIqsu1y7PEBkicUtqeLOcvvzNOmkste8mysCs5TjwBbmN8Elq1t5sz3WGYhEhCD_IphKxJ0eZy0QGLa6rXkl8x6WWrnsAltXevGjF0TdKbMwu4lJEMGsDKGrfourmj7Muq0KKmQRbDKJCeci5aPSlhfHwSksdmqwTIpZHtQYWgk0kk&__tn__=EHH-R");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  color: #7e8ba3;
+  font: 300 1rem/1.5 Helvetica Neue, sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+
+.align {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.align__item--start {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.align__item--end {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.site__logo {
+  margin-bottom: 2rem;
+}
+
+input {
+  border: 0;
+  font: inherit;
+}
+
+input::-webkit-input-placeholder {
+  color: #7e8ba3;
+}
+
+input:-ms-input-placeholder {
+  color: #7e8ba3;
+}
+
+input::-ms-input-placeholder {
+  color: #7e8ba3;
+}
+
+input::placeholder {
+  color: #7e8ba3;
+}
+
+.form__field {
+  margin-bottom: 1rem;
+}
+
+.form input {
+  outline: 0;
+  padding: .5rem 1rem;
+}
+
+.form input[type="email"], .form input[type="password"] {
+  width: 100%;
+}
+
+.grid {
+  margin: 0 auto;
+  max-width: 25rem;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+svg {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+a {
+  color: #7e8ba3;
+}
+
+.register {
+  -webkit-box-shadow: 0 0 250px #000;
+          box-shadow: 0 0 250px #000;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.register input {
+  border: 1px solid #242c37;
+  border-radius: 999px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.register input[type="email"], .register input[type="password"] {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: 1rem 50%;
+}
+
+.register input[type="email"] {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256.017 273.436l-205.17-170.029h410.904l-205.734 170.029zm-.034 55.462l-205.983-170.654v250.349h412v-249.94l-206.017 170.245z"/></svg>');
+}
+
+.register input[type="password"] {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
+}
+
+.register input[type="submit"] {
+  background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+  color: #fff;
+  margin-bottom: 6rem;
+  width: 100%;
+}
+
+.card-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.card-col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 calc(50% - 1rem);
+          flex: 1 0 calc(50% - 1rem);
+  margin: 0 0.5rem;
+}
+
+nb-card-body {
+  color: rgba(123, 231, 197, 0.9);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+/*# sourceMappingURL=landing.component.css.map */

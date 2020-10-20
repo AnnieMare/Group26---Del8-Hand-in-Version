@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+   
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em; " color="primary">Send Invitation</ion-title>
+  <form #sendInv="ngForm" (ngSubmit)="onSubmit(sendInv.value)">
+    <input type="text"  name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" hidden  >
+
+    <!-- [(ngModel)]="Person.PersonID" -->
+
+<!-- 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Select a Group</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group>
+        <ion-item *ngFor="let g of Groups">
+                    
+            <ion-label style="margin-left: 0.5em">{{ g.text }}</ion-label>
+            <ion-radio slot="start"></ion-radio>
+              
+        </ion-item>
+      </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block" color="primary">Next</ion-button>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Select Recipients</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let p of Persons">
+          
+          <ion-checkbox  (click)="changeSelection(p)" #Receiver_list="ngModel"  name="Receiver_list" [(ngModel)]="p.isChecked"></ion-checkbox>
+          <ion-label style="margin-left: 0.5em">{{p.Name}}   {{p.Surname}}</ion-label>
+
+        </ion-item>
+      </ion-list>
+      <input type=text name="SelectedReceivers" [(ngModel)]="SelectedReceivers" hidden>
+      <ion-button expand="block" color="primary" [disabled]="SelectedReceivers.length <1"(click)='receiversSelected()'>Next</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="showWA === true">
+    <ion-card-header>
+      <ion-card-title>Write Invitation</ion-card-title>
+    </ion-card-header>
+        
+            <div *ngIf="Summary.invalid && (Summary.dirty || Summary.touched)"
+          style="color:tomato;">
+        <div *ngIf="Summary.errors.required">
+          *required.
+        </div>
+        </div>
+  <ion-item >
+    <ion-input  type="text" placeholder="Summary" nbInput name="Summary" required ngModel #Summary="ngModel"></ion-input>
+  </ion-item>
+          <div *ngIf="InvitationDetail.invalid && (InvitationDetail.dirty || InvitationDetail.touched)"
+          style="color:tomato;">
+        <div *ngIf="InvitationDetail.errors.required">
+          *required.
+        </div>
+        </div>
+    <ion-item>      
+      <ion-textarea placeholder="Invitation Discription" class="x"  name="InvitationDetail" ngModel #InvitationDetail="ngModel"  required></ion-textarea>
+    </ion-item>
+    
+    <div *ngIf="InvitationDate.invalid && (InvitationDate.dirty || InvitationDate.touched)"
+    style="color:tomato;">
+  <div *ngIf="InvitationDate.errors.required">
+     *required.
+  </div>
+  </div>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MM DD YYYY" placeholder="Select Date" name="InvitationDate" required ngModel #InvitationDate="ngModel"></ion-datetime>
+    </ion-item>
+
+    <ion-label>Start time </ion-label>
+    <ion-datetime title="START"  displayFormat="h:mm" placeholder="Start time" name="StartTime" ngModel #StartTime="ngModel"  required></ion-datetime>
+    <div *ngIf="StartTime.invalid && (StartTime.dirty || StartTime.touched)"
+    style="color:tomato;">
+  <div *ngIf="StartTime.errors.required">
+     *required.
+  </div>
+  </div>
+    <ion-label>End time </ion-label>
+    <ion-datetime title="END" displayFormat="h:mm" placeholder="End time" name="EndTime" ngModel #EndTime="ngModel"  required></ion-datetime>
+  
+  <div *ngIf="EndTime.invalid && (EndTime.dirty || EndTime.touched)"
+    style="color:tomato;">
+  <div *ngIf="EndTime.errors.required">
+     *required.
+  </div>
+  </div>
+    <ion-button expand="block" color="primary" (click)='messageCreated()' >Next</ion-button>
+
+  </ion-card>
+
+  
+  <ion-card *ngIf="showConfirm === true">
+    <ion-card-header>
+      <ion-card-title>Confirm Announcement</ion-card-title>
+    </ion-card-header>
+
+    <ion-item> 
+      <ion-text color="danger">
+      <h5>Are you sure you want to send this message?</h5>      
+    </ion-text>
+  </ion-item>
+  <!-- <ion-item>
+    <p>{{InvitationDetail.value}}</p>
+  </ion-item>  -->
+    
+    <ion-item>
+      <ion-label>Confirm</ion-label>
+      <ion-checkbox slot="start" [checked]="checkbox1"   (click)="checkbox1 = !checkbox1" required></ion-checkbox>
+    </ion-item>
+      <ion-button type='submit' expand="block" color="primary"  [disabled]="checkbox1"><ion-icon name="paper-plane-outline"></ion-icon>Send</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

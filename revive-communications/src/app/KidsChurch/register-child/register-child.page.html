@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+   
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <form #ChildRegistration="ngForm" (ngSubmit)="onSubmit(ChildRegistration.value)">
+  <ion-title style="text-align: center; margin: 0.5em; " color="primary">Register Child</ion-title>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Select Child</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group  [(ngModel)]="selected" name="selected">
+        <ion-item *ngFor="let c of myChildren">
+                    
+            <ion-label style="margin-left: 0.5em">{{c.Name}} {{c.Surname}}</ion-label>
+            <ion-radio slot="start"  value="{{c.ChildID}}"></ion-radio>
+              
+        </ion-item>
+      </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block" color="primary"   (click)='childSelected()'>Next</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="showClass === true">
+    <ion-card-header>
+      <ion-card-title>Select Class</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group [(ngModel)]="selecedclass" name="selecedclass">
+        <ion-item *ngFor="let k of KidsChurchClasses" >
+                    
+            <ion-label  class="ion-text-wrap" style="margin-left: 0.5em">{{k.KidshurchName}}</ion-label>
+            <ion-radio slot="start"   value="{{k.KidsChurchID}}" ></ion-radio>
+              
+        </ion-item>
+      </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block" color="primary"   (click)='classSelected()'>Next</ion-button>
+    </ion-card-content>
+  </ion-card>  
+  <ion-card *ngIf="showConfirm === true">
+    <ion-card-header>
+      <ion-card-title>Confirm Registration</ion-card-title>
+    </ion-card-header>
+
+    <ion-item> 
+      <ion-text color="danger">
+      <h5>Are you sure you want to register your child?</h5>      
+    </ion-text>
+  </ion-item>
+     
+    <ion-item>
+      <ion-label>Confirm</ion-label>
+      <ion-checkbox slot="start" [checked]="checkbox1" (click)="checkbox1 = !checkbox1" required></ion-checkbox>
+    </ion-item>
+      <ion-button expand="block" color="primary" type="submit" [disabled]="checkbox1"><ion-icon name="document-text-outline"  style="margin-right: 1em"></ion-icon> Register</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

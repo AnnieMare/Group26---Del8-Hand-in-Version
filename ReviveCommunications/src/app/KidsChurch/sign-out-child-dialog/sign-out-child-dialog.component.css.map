@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "sign-out-child-dialog.component.scss"
+    ],
+    "names": [],
+    "file": "sign-out-child-dialog.component.css"
+}

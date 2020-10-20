@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-button slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+     
+      <ion-thumbnail style="margin-left:45%; " >
+        <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+      </ion-thumbnail>
+      
+      <ion-button slot="end" routerLink="/view-announcement">
+        <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+      </ion-button>
+      <ion-button slot="end" routerLink="/view-invitation">
+        <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <form #ReportZoneHC="ngForm" class="form-group" (ngSubmit)="AddHCAttform(ReportZoneHC.value)">
+        <ion-card-header>
+            <h1>Report on Homecell Attendance</h1>
+        </ion-card-header>
+        <ion-card-body>
+            <ion-item>
+                <ion-label>Date:</ion-label>
+                <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Description:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Members:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Leaders:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Visitors:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>First Time Visitors:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Salvations:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Organizational individual Position:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Zone Homecell attendance Goal ID:</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            
+        </ion-card-body>
+        <ion-card-footer>
+            <ion-button>Submit</ion-button>
+            <ion-button>Back</ion-button>
+        </ion-card-footer>
+
+    </form>
+</ion-content>

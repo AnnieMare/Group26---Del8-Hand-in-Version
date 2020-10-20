@@ -1,0 +1,300 @@
+<ion-header>
+  <!-- NB NB-->
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button> 
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary" style="height: 45px;">Salvation Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="addSalvationForm(form)">
+  <!-- Personal Information -->
+  <div >
+<ion-item>
+  <ion-label>Alter worker</ion-label>
+  <ion-input ngModel slot="end" name="AlterWorker" placeholder="Enter name" required></ion-input>
+</ion-item>
+<br>
+<div style="text-align: center;">
+<ion-item>
+  <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Tell us about yourself</ion-label>
+</ion-item>
+</div>
+  <br>
+  <ion-item>
+    <ion-label>Title<p style="color: red;">*</p></ion-label>
+    <ion-select placeholder="Select Title" ngModel slot="end" name="Title" required>
+      <ion-select-option value="Mr.">Mr.</ion-select-option>
+            <ion-select-option value="Miss.">Miss.</ion-select-option>
+            <ion-select-option value="Mrs.">Mrs.</ion-select-option>
+            <ion-select-option value="Mx.">Mx.</ion-select-option>
+            <ion-select-option value="Prof.">Prof</ion-select-option>
+            <ion-select-option value="Dr.">Dr.</ion-select-option>
+            <ion-select-option value="Ps.">Ps.</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input ngModel slot="end" name="Name"  placeholder="Enter Name" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Surname</ion-label>
+    <ion-input ngModel slot="end" name="Surname" placeholder="Enter Surname" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age</ion-label>
+    <ion-select placeholder="Select Age" ngModel slot="end" name="Age" required>
+      <ion-select-option value="0-5">0-5</ion-select-option>
+      <ion-select-option value="6-11">6-11</ion-select-option>
+      <ion-select-option value="12-15">12-15</ion-select-option>
+      <ion-select-option value="16-18">16-18</ion-select-option>
+      <ion-select-option value="19-25">19-25</ion-select-option>
+      <ion-select-option value="26-30">26-30</ion-select-option>
+      <ion-select-option value="31-40">31-40</ion-select-option>
+      <ion-select-option value="41-50">41-50</ion-select-option>
+      <ion-select-option value="51-60">51-60</ion-select-option>
+      <ion-select-option value="60+">60+</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Maritual status</ion-label>
+    <ion-select placeholder="Select status" ngModel slot="end" name="MaritualStatus" required>
+      <ion-select-option value="Maried">Maried</ion-select-option>
+      <ion-select-option value="Divorced">Divorced</ion-select-option>
+      <ion-select-option value="Single">Single</ion-select-option>
+      <ion-select-option value="Widow/er">Widow/er</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Employment status</ion-label>
+    <ion-select placeholder="Select status" ngModel slot="end" name="EmploymentStatus" required>
+      <ion-select-option value="Employer">Employer</ion-select-option>
+            <ion-select-option value="Employed">Employed</ion-select-option>
+            <ion-select-option value="Unemployed">Unemployed</ion-select-option>
+            <ion-select-option value="Student">Student</ion-select-option>
+            <ion-select-option value="Scholar">Scholar</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <div style="text-align: center;">
+    <ion-item>
+      <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">We would like to come and visit you</ion-label>
+    </ion-item>
+    </div>
+    <ion-item>
+      <ion-label>Residential Address</ion-label>
+      <ion-textarea clearOnEdit="true" ngModel slot="end" name="ResidentialAddress" placeholder="Enter Residential Address" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Suburb</ion-label>
+      <ion-input ngModel slot="end" name="Suburb" placeholder="Enter Suburb" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input ngModel slot="end" name="City" placeholder="Enter City" required></ion-input>
+    </ion-item>
+
+
+    <div style="text-align: center;">
+      <ion-item>
+        <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">How can we contact you?</ion-label>
+      </ion-item>
+      </div>
+      <ion-item>
+        <ion-label>Tel (H)</ion-label>
+        <ion-input ngModel slot="end" name="HomeTelNo" placeholder="Enter Home Tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tel (W)</ion-label>
+        <ion-input ngModel slot="end" name="WorkTelNo" placeholder="Enter Work Tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cell phone</ion-label>
+        <ion-input ngModel slot="end" name="Cellphone" placeholder="Enter Cell phone number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>E-mail</ion-label>
+        <ion-input type="Email" ngModel slot="end" name="Email" placeholder="Enter E-mail" required></ion-input>
+      </ion-item>
+
+
+      <div style="text-align: center;">
+        <ion-item>
+          <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Did someone invite you to CRC?</ion-label>
+        </ion-item>
+        </div>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>If someone invited you, please give <br>us his/her name</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Yes</ion-label>
+              <ion-radio slot="start" (click)="enableInvite()"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>No</ion-label>
+              <ion-radio slot="start" (click)="disableInvite()"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <div *ngIf="Invite">
+        <ion-item>
+          <ion-label>Name & Surname</ion-label>
+          <ion-input ngModel slot="end" slot="end" name="NameSurnameInvite" placeholder="Enter Name & Surname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Homecell Leader</ion-label>
+          <ion-input ngModel slot="end" slot="end" name="HomecellLeader" placeholder="Enter Name "></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Zone Pastor</ion-label>
+          <ion-input ngModel slot="end" slot="end" name="ZonePastor" placeholder="Enter Name "></ion-input>
+        </ion-item>
+      </div>
+      </div>
+
+<!-- Education -->
+      <div>
+        <ion-item>
+          <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Education</ion-label>
+        </ion-item>
+        <br>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>Please select your current education level</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>School</ion-label>
+              <ion-radio slot="start" (click)="enableSchool()"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>University</ion-label>
+              <ion-radio slot="start" (click)="enableUniversity()"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Neither</ion-label>
+              <ion-radio slot="start" (click)="neither()"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <div *ngIf="School">
+          <div style="text-align: center;">
+            <ion-item>
+              <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">School</ion-label>
+            </ion-item>
+            </div>
+            <ion-list>
+              <ion-radio-group>
+                <ion-item>
+                  <ion-label>Please select one of the options:</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>High School</ion-label>
+                  <ion-radio slot="start"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Primary School</ion-label>
+                  <ion-radio slot="start"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+            <ion-item>
+              <ion-label>Name of school</ion-label>
+              <ion-input slot="end" ngModel slot="end" name="NameOfSchool" placeholder="Enter Name of School"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Grade</ion-label>
+              <ion-select placeholder="Select Grade" ngModel slot="end" name="Grade">
+                <ion-select-option value="0">Grade R</ion-select-option>
+                <ion-select-option value="1">Grade 1</ion-select-option>
+                <ion-select-option value="2">Grade 2</ion-select-option>
+                <ion-select-option value="3">Grade 3</ion-select-option>
+                <ion-select-option value="4">Grade 4</ion-select-option>
+                <ion-select-option value="5">Grade 5</ion-select-option>
+                <ion-select-option value="6">Grade 6</ion-select-option>
+                <ion-select-option value="7">Grade 7</ion-select-option>
+                <ion-select-option value="8">Grade 8</ion-select-option>
+                <ion-select-option value="9">Grade 9</ion-select-option>
+                <ion-select-option value="10">Grade 10</ion-select-option>
+                <ion-select-option value="11">Grade 11</ion-select-option>
+                <ion-select-option value="12">Grade 12</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Parent/Guardian's cell <br>phone number if under <br>the age of 18</ion-label>
+              <ion-input slot="end" ngModel slot="end" name="ParentGuardianCell" placeholder="Enter Parent/Guardian number"></ion-input>
+            </ion-item>
+        </div>
+        <div *ngIf="University">
+          <div style="text-align: center;">
+            <ion-item>
+              <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">University</ion-label>
+            </ion-item>
+            </div>
+            <ion-item>
+              <ion-label>Current year of study</ion-label>
+              <ion-select placeholder="Select year" ngModel slot="end" name="StudyYear">
+                <ion-select-option Value="1">First Year</ion-select-option>
+                <ion-select-option value="2">Second Year</ion-select-option>
+                <ion-select-option value="3">Third Year</ion-select-option>
+                <ion-select-option value="4">Post Graduate</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Institution</ion-label>
+              <ion-input slot="end" ngModel slot="end" name="Institution" placeholder="Enter Name of Institution"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Study Address</ion-label>
+              <ion-textarea clearOnEdit="true" slot="end" ngModel slot="end" name="StudyAddress" placeholder="Enter Study Address"></ion-textarea>
+            </ion-item>
+        </div>
+      </div>
+
+      <!-- Prayer Request -->
+      <div >
+        <br>
+        <ion-item>
+          <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Do you have a prayer request?</ion-label>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label>What would you like <br>us to pray for?</ion-label>
+          <ion-textarea clearOnEdit="true" slot="end" ngModel slot="end" name="PrayerRequest" placeholder="Enter Prayer Request"></ion-textarea>
+        </ion-item>
+        <br>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>'I consent for my information provided<br>to be used by the church<br> and its leaders in all church activities.'</ion-label>
+              <ion-radio slot="start" (click)="consent()"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <br>
+        <div style="text-align: center;">
+      <ion-item>
+        <ion-label style="text-align: center;" expand="full">"I say to you that likewise there will be more<br> joy in heaven over one sinner who<br> repents than over ninethy-nine just persons <br>who need no repentance."<br> -Luke 15:7 (NKJV)</ion-label>
+      </ion-item>
+      <br>
+    
+    <ion-button type="submit" style="width: 75px;" disabled="{{consentConfirm}}">Submit</ion-button>
+      </div>
+      </div>
+</form>
+</ion-content>

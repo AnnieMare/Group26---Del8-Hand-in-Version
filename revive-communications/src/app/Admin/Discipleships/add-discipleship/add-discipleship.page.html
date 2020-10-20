@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Add Discipleship</ion-title>
+  <ion-item>
+    <ion-label position="stacked">Discipleship Description</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-button  expand="full" color="primary" routerLink="/view-discipleship">Create</ion-button>
+
+</ion-content>

@@ -1,0 +1,135 @@
+<nb-layout>
+
+  <!-- nav bar start -->
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+    <div class="header-container">
+    <nb-actions size="medium"  >
+       <nb-action icon="email-outline"
+                 
+                 title="Invitations"
+                 link="/ViewInvitation"
+                 >
+      </nb-action>
+      <nb-action icon="message-circle-outline"
+                 title="Announcements"
+                 link="/ViewAnnouncement">
+      </nb-action>
+      <nb-action id="user">
+        <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+      </nb-action>
+      <nb-action>
+          <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+      </nb-action>
+     </nb-actions>
+    </div>
+  </nb-layout-header>
+  <nb-sidebar state="compacted">
+  <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <!-- nav bar end -->
+  <nb-layout-column class="colored-column-basic">
+    <nb-card>
+      <nb-card-header>Follow-Up on Members wanting to serve
+        <a href="http://localhost:8080/Follow-Up.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+      </nb-card-header>
+      <nb-card-body style="height: 50px;">
+        <table style="border: white;">
+          <tbody>
+            <tr>
+              <td style="width: 50%;">
+                <div style="padding: 0px; height: 250px; width: 250px; float: right;">
+                  <canvas 
+                      baseChart 
+                      [data]="pieChartData" 
+                      [labels]="pieChartLabels" 
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions" 
+                      [plugins]="pieChartPlugins" 
+                      [colors]="pieChartColors" 
+                      [legend]="pieChartLegend" width="250" height="250">
+                  </canvas>
+              </div>
+              </td>
+              <td style="width: 50%;">
+                <label >Total follow-ups:</label><label style="margin: 15px;">{{TotalFollowUps}}</label><br><br>
+                <label >Completed Number of Follow-ups:</label><label style="margin: 5px;">{{MembersProgress.Completed}}</label><br><br>
+                <label >Number of follow-ups remaining:</label><label style="margin: 15px;">{{MembersProgress.Remaining}}</label><br><br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </nb-card-body>
+    </nb-card>
+      <nb-card>
+        <nb-card-body>
+          <div *ngIf="NoFollowUpsLeft != null" style="text-align: center; color: teal; margin-top: 25px; margin-bottom: 25px;">
+            <p>{{NoFollowUpsLeft}}</p>
+          </div>
+          <table *ngIf="NoFollowUpsLeft == null">
+            <tr> 
+              <th>Completion</th>
+              <th>Date</th>
+              <th>Name & Surname</th>
+              <th>Number</th>
+              <th>Email</th>
+              <th>Zone Pastor</th>
+              <th>Homecell</th>
+              <th>Spiritual Gift Test Session</th>
+              <th>Highest Spiritual Gifts</th>
+              <th>Groups Interested</th>
+             
+            </tr>
+            <tr *ngFor="let member of MemberServe">
+              <td>
+                  <nb-accordion>
+                   <nb-accordion-item>
+                  <nb-accordion-item-header>Follow-up</nb-accordion-item-header>
+                  <nb-accordion-item-body>
+                      <td style="text-align: center;"><button nbButton size="small" (click)="FollowedUp(member)" >Completed<nb-icon icon="checkmark-outline"></nb-icon></button></td>
+                  </nb-accordion-item-body>
+                  <nb-accordion-item-body>
+                    <td style="text-align: center;"><button nbButton style="width: 125px "size="small" routerLink="/AssignOrgGroup/{{member.PersonID}}">Assign<nb-icon icon="person-done-outline"></nb-icon></button></td>
+                </nb-accordion-item-body>
+                  <nb-accordion-item-body>
+                      <td style="text-align: center;"><button nbButton size="small" (click)="NoAnswer(member)">No Answer<nb-icon icon="close-outline"></nb-icon></button></td>
+                  </nb-accordion-item-body>
+                 </nb-accordion-item>
+                </nb-accordion>
+              </td>
+              <td>{{member.FollowUpDate}}</td>
+              <td>{{member.PersonName}} {{member.PersonSurname}}</td>
+              <td>{{member.PersonNumber}}</td>
+              <td>{{member.PersonEmail}}</td>
+              <td>{{member.ZonePastor}}</td>
+              <td>{{member.Homecell}}</td>
+              <td>{{member.SpiritualGiftTestSession}}</td>
+              <td>{{member.HighestSpiritualGifts}}</td>
+              <td>   <nb-accordion>
+                  <nb-accordion-item>
+                 <nb-accordion-item-header>View</nb-accordion-item-header>
+                 <nb-accordion-item-body>
+                  <label>{{member.Group1}}</label>
+                 </nb-accordion-item-body>
+                 <nb-accordion-item-body>
+                  <label>{{member.Group2}}</label>
+                 </nb-accordion-item-body>
+                 <nb-accordion-item-body>
+                  <label>{{member.Group3}}</label>
+                 </nb-accordion-item-body>
+                </nb-accordion-item>
+               </nb-accordion>
+             </td>
+    
+            </tr>
+          </table>
+        </nb-card-body>
+      </nb-card>
+  </nb-layout-column>
+  <nb-layout-footer fixed>
+    <img src="https://church.crc.org.za/assets/img/brand/black-with-text.png" style=" height: 30px;">
+    </nb-layout-footer>
+    
+    </nb-layout>

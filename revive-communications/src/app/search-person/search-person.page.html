@@ -1,0 +1,51 @@
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Ionic Template</title>
+
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+ </head>
+
+  
+    <ion-header class="bar-stable">
+        <h1 class="title"> Person</h1>
+    </ion-header>
+    <ion-content>
+      <ion-item>
+        <ion-icon slot="start" name="search" style="background-color: none;"></ion-icon>
+        <ion-input  #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)"></ion-input>
+
+      </ion-item>
+
+        <div class="row header" style="color: white;">
+          <div class="col">ID</div>
+          <div class="col">Name</div>
+          <div class="col">Surname</div>
+          <div class="col">Date of Birth</div>
+          <div class="col">Residential Address</div>
+          <div class="col">Activation Status</div>
+          <div class="col"></div>
+          <div class="col"></div>
+        
+          
+        </div>
+        <div class="row" >
+          <div class="col">1</div>
+          <div class="col">Jannie</div>
+          <div class="col">Louw</div>
+          <div class="col">12/12/2000</div>
+          <div class="col">50 Prospect Street, Hatfield, 0083</div>
+          <div class="col">Active</div>
+          
+          <div class="col"><button class="button" style="background: none;" [routerLink]="['/update-person']">  <ion-icon slot="start" name="pencil" style="color: black;" ></ion-icon></button></div>
+
+          
+          <div class="col"><button class="button" style="background: none;">  <ion-icon slot="start" name="trash" style="color: black;" ></ion-icon></button></div>
+        </div>
+    </ion-content>
+ 
+

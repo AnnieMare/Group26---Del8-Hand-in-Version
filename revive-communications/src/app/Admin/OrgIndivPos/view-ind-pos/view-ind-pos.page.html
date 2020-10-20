@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Organisational Individual <br/> Positions</ion-title>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Pokémon Yellow</ion-label>
+      <ion-button color="primary" size="medium"  routerLink="/update-ind-pos"><ion-icon name="build-outline"></ion-icon></ion-button>
+      <ion-button color="secondary" size="medium"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mega Man X</ion-label>
+      <ion-button color="primary" size="medium" routerLink="/update-ind-pos"><ion-icon name="build-outline" ></ion-icon></ion-button>
+      <ion-button color="secondary" size="medium"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>The Legend of Zelda</ion-label>
+      <ion-button color="primary" size="medium" routerLink="/update-ind-pos"><ion-icon name="build-outline" ></ion-icon></ion-button>
+      <ion-button color="secondary" size="medium"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+    <ion-button  expand="full" color="primary" routerLink="/add-ind-pos"><ion-icon name="add-outline"></ion-icon>Add New</ion-button>
+  </ion-list>
+</ion-content>

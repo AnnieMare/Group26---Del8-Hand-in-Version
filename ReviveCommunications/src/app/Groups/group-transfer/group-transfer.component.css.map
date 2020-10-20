@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CACL;EACI,YAAY,EAAE,IAAI;CACrB;;AAED,AAAA,SAAS,CAAC;EACN,SAAS,EAAE,OAAO;EAClB,WAAW,EAAE,IAAI;CACpB",
+    "sources": [
+        "group-transfer.component.scss"
+    ],
+    "names": [],
+    "file": "group-transfer.component.css"
+}

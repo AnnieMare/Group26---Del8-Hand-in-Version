@@ -1,0 +1,164 @@
+<nb-layout>
+  
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+                   
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+
+<nb-card>
+    <nb-card-header>
+    <h3>Salvation Form</h3>
+    </nb-card-header>
+  <nb-card-body>
+    <nb-stepper orientation="vertical" disableStepNavigation>
+      <nb-step label="Personal Information">
+        <h6>Personal Information</h6>
+        <p style="background-color: teal; color: white;">Tell us about yourself</p>
+        <div>
+          <label style="margin-right: 60px;">Title</label><nb-select placeholder="Mr.">
+              <nb-option value="">Option empty</nb-option>
+              <nb-option value="0">Employer</nb-option>
+              <nb-option value="1">Employed</nb-option>
+              <nb-option value="2">Unemployed</nb-option>
+              <nb-option value="3">Student</nb-option>
+              <nb-option value="3">Scholar</nb-option>
+            </nb-select>
+          <label style="margin-left: 40px; margin-right: 125px;">Age</label>
+          <nb-select placeholder="19-25">
+              <nb-option value="">Option empty</nb-option>
+              <nb-option value="0">0-5</nb-option>
+              <nb-option value="1">6-11</nb-option>
+              <nb-option value="2">12-15</nb-option>
+              <nb-option value="3">16-18</nb-option>
+              <nb-option value="4">19-25</nb-option>
+              <nb-option value="2">26-30</nb-option>
+              <nb-option value="3">31-40</nb-option>
+              <nb-option value="4">41-50</nb-option>
+              <nb-option value="2">51-60</nb-option>
+              <nb-option value="3">60+</nb-option>
+            </nb-select><br><br>
+          <label style="margin-right: 30px;">Name</label><input type="text" nbInput placeholder="Griffin" shape="rectangle">
+          <label style="margin-left: 40px; margin-right: 60px;">Marital Status</label>
+          <nb-select placeholder="Single">
+              <nb-option value="">Option empty</nb-option>
+              <nb-option value="0">Maried</nb-option>
+              <nb-option value="1">Divorced</nb-option>
+              <nb-option value="2">Single</nb-option>
+              <nb-option value="3">Widow/er</nb-option>
+            </nb-select><br><br>
+          <label style="margin-right: 10px;">Surname</label><input type="text" nbInput placeholder="Smith" shape="rectangle">
+          <label style="margin-left: 40px; margin-right: 25px;">Employment Status</label>
+          <nb-select placeholder="Student">
+              <nb-option value="">Option empty</nb-option>
+              <nb-option value="0">Employer</nb-option>
+              <nb-option value="1">Employed</nb-option>
+              <nb-option value="2">Unemployed</nb-option>
+              <nb-option value="3">Student</nb-option>
+              <nb-option value="3">Scholar</nb-option>
+            </nb-select><br><br>  
+            <p style="background-color: teal; color: white;">We would like to come and visit you</p>
+            <label>Residential Address</label><textarea nbInput fullWidth placeholder="154 roundthe Corner ave" ></textarea><br><br>
+            <label style="margin-right: 30px;">Suburb</label><input type="text" nbInput placeholder="Hatfield" shape="rectangle" >
+            <div style="float:right">
+            <label style="margin-right:110px">City</label><input type="text" nbInput placeholder="Pretoria" shape="rectangle">
+            </div>
+            <br><br>
+            <p style="background-color: teal; color: white;">How can we contact you?</p>
+            <label style="margin-right: 35px;">Tel (H)</label><input type="text"  placeholder="012 054 1756" nbInput shape="rectangle">
+            <label style="margin-right: 95px; margin-left: 30px">Tel (W)</label><input type="text"  placeholder="012 577 8952" nbInput shape="rectangle"><br><br>
+            <label style="margin-right: 10px;">Cellphone</label><input type="text"  placeholder="0730513 514 9632" nbInput shape="rectangle">
+            <label style="margin-right: 100px; margin-left: 30px">E-mail</label><input type="text"  placeholder="griffins@gmail.com" nbInput shape="rectangle">
+        </div><br><br>
+        <p style="background-color: teal; color: white;">Did someone invite you to CRC?</p>
+        <label style="margin-right: 5px;">If someone invited you, please give us his/her name</label><nb-radio>Yes</nb-radio><nb-radio>No</nb-radio>
+        
+        <label style="margin-right: 35px;">Name & Surname</label><input type="text"  placeholder="Ndlali Ledwaba" nbInput shape="rectangle"><br><br>
+        <label style="margin-right: 45px;">Homecell leader</label><input type="text" nbInput shape="rectangle"><br><br>
+        <label style="margin-right: 75px;">Zone Pastor</label><input type="text" nbInput shape="rectangle">
+          <br>
+        <div style="float: right">
+        <button class="prev-button" nbButton nbStepperPrevious style="margin-right: 5px;">prev</button>
+        <button class="next-button" nbButton nbStepperNext>next</button>
+        </div>
+      </nb-step>
+      <nb-step label="Education">
+        <h4>Education</h4>
+        <p style="background-color: teal; color: white;">School</p>
+        <label>Please select one of the options if applicable:</label>
+        <nb-radio>High School</nb-radio>
+        <nb-radio>Primary School</nb-radio>
+        <label style="margin-right: 170px;">Name of school:</label><input type="text" nbInput shape="rectangle" ><br><br>
+        <label style="margin-right: 250px;">Grade</label> <nb-select placeholder="Select Grade">
+          <nb-option value="">Grade R</nb-option>
+          <nb-option value="0">Grade 1</nb-option>
+          <nb-option value="1">Grade 2</nb-option>
+          <nb-option value="2">Grade 3</nb-option>
+          <nb-option value="3">Grade 4</nb-option>
+          <nb-option value="3">Grade 5</nb-option>
+          <nb-option value="1">Grade 6</nb-option>
+          <nb-option value="2">Grade 7</nb-option>
+          <nb-option value="3">Grade 8</nb-option>
+          <nb-option value="3">Grade 9</nb-option>
+          <nb-option value="1">Grade 10</nb-option>
+          <nb-option value="2">Grade 11</nb-option>
+          <nb-option value="3">Grade 12</nb-option>
+          <nb-option value="3">Grade 13</nb-option>
+        </nb-select><br><br> 
+            <p style="background-color: teal; color: white;">University</p>
+        <label style="margin-right: 150px;">Current year of study:</label><nb-select placeholder="Third Year">
+          <nb-option value="">First Year</nb-option>
+          <nb-option value="0">Second Year</nb-option>
+          <nb-option value="1">Third Year</nb-option>
+          <nb-option value="2">Post Graduate</nb-option>
+        </nb-select><br><br> 
+        <label style="margin-right: 215px;">Institution</label><input type="text"  placeholder="University of Pretoria" nbInput shape="rectangle" ><br><br>
+            <label>Study Address</label><textarea nbInput fullWidth  placeholder="Hatfield Campus, Lynnwood rd."></textarea><br>
+            <br><br>
+          <label>Parent/Gaurdian's cellphone number<input type="text" nbInput shape="rectangle" style="float: right;"><br>if under the age of 18</label><br><br>
+            <div style="float: right;">
+        <button class="prev-button" nbButton nbStepperPrevious style="margin-right: 5px">prev</button>
+        <button class="next-button" nbButton nbStepperNext>next</button>
+      </div>
+      </nb-step>
+      <nb-step label="Prayer request">
+          <h4>Do you have a prayer request?</h4>
+          <label>What would you like us to pray for?</label>
+          <textarea nbInput fullWidth  placeholder="For all the families that lost someone to the Covid-19 Pandemic."></textarea><br><br>
+          <div style="float: right;">
+          <button class="prev-button" nbButton nbStepperPrevious style="margin-right:5px">prev</button>
+          <button class="next-button" nbButton  routerLink="/FollowUpSalvation">Back to Follow-ups</button>
+      </div>
+        </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card></nb-layout-column>
+</nb-layout>

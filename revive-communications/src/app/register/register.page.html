@@ -1,0 +1,106 @@
+<ion-header>
+  <!-- NB NB-->
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button> 
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary" style="height: 45px;">Register Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmitPerson(form.value)">
+  <!-- Personal Information -->
+  <div >
+
+<div style="text-align: center;">
+<ion-item>
+  <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Personal Information</ion-label>
+</ion-item>
+</div>
+  <br>
+ 
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input ngModel slot="end" name="Name"  placeholder="Enter Name" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Surname</ion-label>
+    <ion-input ngModel slot="end" name="Surname" placeholder="Enter Surname" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date of Birth</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2020-12-12" value="2002-09-23T15:03:46.789" ngModel slot="end" name="DateOfBirth" placeholder="MM/DD/YYYY"></ion-datetime>
+
+ 
+  </ion-item>
+  
+
+  <div style="text-align: center;">
+    <ion-item>
+      <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">We would like to come and visit you</ion-label>
+    </ion-item>
+    </div>
+    <ion-item>
+      <ion-label>Residential Address</ion-label>
+      <ion-textarea clearOnEdit="true" ngModel slot="end" name="Address" placeholder="Enter Residential Address" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Suburb</ion-label>
+      <ion-input ngModel slot="end" name="Suburb" placeholder="Enter Suburb" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>City</ion-label>
+      <ion-input ngModel slot="end" name="City" placeholder="Enter City" required></ion-input>
+    </ion-item>
+
+
+    <div style="text-align: center;">
+      <ion-item>
+        <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">How can we contact you?</ion-label>
+      </ion-item>
+      </div>
+     <ion-item>
+        <ion-label>Cell phone</ion-label>
+        <ion-input ngModel slot="end" name="Number" placeholder="Enter Cell phone number" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>E-mail</ion-label>
+        <ion-input type="Email" ngModel slot="end" name="Email" placeholder="Enter E-mail" required></ion-input>
+      </ion-item>
+
+
+    
+
+<!-- Login details -->
+      <div>
+        <ion-item>
+          <ion-label style="background-color: teal; color: white; text-align: center;" expand="full">Security details</ion-label>
+        </ion-item>
+        <br>
+      
+          <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input type="text" ngModel slot="end" name="Username" placeholder="Enter Username" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input type="Password" ngModel slot="end" name="Password" placeholder="Enter Password" required></ion-input>
+          </ion-item>
+    
+    <ion-button type="submit" style="width: 75px;" routerLink="/Login">Submit</ion-button>
+      </div>
+      </div>
+</form>
+</ion-content>

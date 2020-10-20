@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "view-child-dialog.component.scss"
+    ],
+    "names": [],
+    "file": "view-child-dialog.component.css"
+}

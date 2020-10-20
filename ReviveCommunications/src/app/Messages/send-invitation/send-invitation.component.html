@@ -1,0 +1,146 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+<form #sendInv="ngForm" (ngSubmit)="onSubmit(sendInv.value)">
+  <input type="text"  name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" hidden >
+
+  <nb-card>
+    <nb-card-header>
+      <a href="http://localhost:8080/SendInvitation.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+    </nb-card-header>
+    <nb-card-body>
+      <nb-stepper orientation="horizontal" disableStepNavigation>
+        <!-- <nb-step [label]="labelOne">
+          <ng-template #labelOne>Select A group</ng-template>
+          <h4>Select A group</h4>
+          <nb-card>
+            <nb-card-header>
+              My Groups
+            </nb-card-header>
+            <nb-list>
+             <nb-list-item *ngFor="let group of Groups; let i = index">
+              <nb-radio value="i" (click)="onClick()">{{group.type}}  {{group.name }}</nb-radio>
+              </nb-list-item>
+            </nb-list>
+          </nb-card>
+          <button class="prev-button" nbButton disabled nbStepperNext>prev</button>
+          <button class="next-button" nbButton nbStepperNext>next</button>
+        </nb-step> -->
+        <nb-step [label]="labelTwo">
+          <ng-template #labelTwo>Select Recipients</ng-template>
+          <h4>Confirm Recipients</h4>
+          <nb-card>
+            <nb-card-header>
+              Group Members
+            </nb-card-header>
+            <nb-list>
+              <nb-list-item *ngFor="let person of Persons">
+                <nb-checkbox (change)="changeSelection()" #Receiver_list="ngModel"  name="Receiver_list" [(ngModel)]="person.isChecked">{{person.Name}}   {{person.Surname}}</nb-checkbox>
+              </nb-list-item>
+            </nb-list>
+            <input type=text name="SelectedReceivers" [(ngModel)]="SelectedReceivers" hidden>
+          </nb-card>
+          <button class="prev-button" nbButton nbStepperPrevious >prev</button>
+          <button class="next-button" nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step label="Write Invitation">
+          <h4>Write Invitation</h4>
+          <div>
+            <div *ngIf="Summary.invalid && (Summary.dirty || Summary.touched)"
+          style="color:tomato;">
+        <div *ngIf="Summary.errors.required">
+           *required.
+        </div>
+        </div>
+          <input type="text" placeholder="Summary" nbInput name="Summary" required ngModel #Summary="ngModel">
+
+          <div *ngIf="InvitationDetail.invalid && (InvitationDetail.dirty || InvitationDetail.touched)"
+          style="color:tomato;">
+        <div *ngIf="InvitationDetail.errors.required">
+           *required.
+        </div>
+        </div>
+          <textarea nbInput fullWidth placeholder="Invitation Discription" class="x"  name="InvitationDetail" ngModel #InvitationDetail="ngModel"  required></textarea>
+          <label><strong>Date </strong></label>
+          <input nbInput [nbDatepicker]="firstDate"  name='InvitationDate' required  [(ngModel)]="InvitationDate">
+          <nb-datepicker  [min]="min" #firstDate></nb-datepicker>
+          <!-- <div *ngIf="InvitationDate.invalid && (InvitationDate.dirty || InvitationDate.touched)"
+          style="color:tomato;">
+        <div *ngIf="InvitationDate.errors.required">
+           *required.
+        </div>
+
+        </div>-->
+          <label><strong>Start time </strong></label>
+          <input type="time"  title="START" nbInput placeholder="Start time" name="StartTime" ngModel #StartTime="ngModel"  required>
+
+          <div *ngIf="StartTime.invalid && (StartTime.dirty || StartTime.touched)"
+          style="color:tomato;">
+        <div *ngIf="StartTime.errors.required">
+           *required.
+        </div>
+        </div>
+          <label><strong>End time </strong></label>
+          <input type="time" title="END" nbInput placeholder="End time" name="EndTime" ngModel #EndTime="ngModel"  required>
+
+        </div>
+        <div *ngIf="EndTime.invalid && (EndTime.dirty || EndTime.touched)"
+          style="color:tomato;">
+        <div *ngIf="EndTime.errors.required">
+           *required.
+        </div>
+        </div>
+          <button class="prev-button" nbButton nbStepperPrevious>prev</button>
+          <button class="next-button" nbButton nbStepperNext>next</button>
+        </nb-step>
+        <nb-step  label="Send">
+          <ng-template ><i class="paper-plane-outline"></i></ng-template>
+          <h4>Send Invite</h4>
+          <div>
+            <p><strong>Are you sure you want to send this message?</strong></p>
+            <p>{{InvitationDetail.value}}</p>
+            <nb-list-item style="border:0em">
+              <nb-checkbox [checked]="checkbox1" (change)="checkbox1 = !checkbox1" required>Confirm</nb-checkbox>
+            </nb-list-item>
+          </div>
+          <button class="prev-button" nbButton nbStepperPrevious>prev</button>
+          <button class="next-button" nbButton  nbStepperNext [disabled]="!checkbox1">Send</button>
+        </nb-step>
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>
+  </form></nb-layout-column>
+  </nb-layout>

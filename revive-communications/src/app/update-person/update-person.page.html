@@ -1,0 +1,66 @@
+<ion-header>
+  <!-- NB NB-->
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button> 
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary" style="height: 45px;">Update Person</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<div class="body" >
+  <!-- <ion-title>Update Person</ion-title> -->
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+
+    <ion-input type="text" name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" hidden></ion-input> 
+    <ion-item lines="full">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text"  name="Name" ngModel #Name="ngModel" [(ngModel)]="Person.Name" required></ion-input>
+      </ion-item>
+  <br>
+      <ion-item lines="full">
+        <ion-label position="floating">Surname</ion-label>
+        <ion-input type="text"  name="Surname" ngModel #Surname="ngModel" [(ngModel)]="Person.Surname"required></ion-input>
+      </ion-item>
+      <br>
+      <ion-item lines="full">
+        <ion-label position="floating">Cellphone Number</ion-label>
+        <ion-input type="text"  name="Number" ngModel #Number="ngModel" [(ngModel)]="Person.Number" required></ion-input>
+      </ion-item>
+      <br>
+      <ion-item lines="full">
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input type="email"  name="Email" ngModel #Email="ngModel" [(ngModel)]="Person.Email" required></ion-input>
+      </ion-item>
+      <br>
+      <ion-item lines="full">
+        <ion-label position="floating">Residential Address</ion-label>
+        <ion-input type="text"  name="Address" ngModel #Address="ngModel" [(ngModel)]="Person.Address"required></ion-input>
+      </ion-item>
+        
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" style="background-color:#06bebd;" expand="block" >Update</ion-button>
+        </ion-col>
+      
+        <ion-col>
+          <ion-button type="button" style="background-color:#06bebd;" routerLink="/home" expand="block" >Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+</div>
+</ion-content>

@@ -1,0 +1,62 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" ></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+        <form [formGroup]="updatePerson" (ngSubmit)="onSubmit(updatePerson.value)">
+            <nb-card>
+                <nb-card-header>Update Person</nb-card-header>
+                <nb-card-body>            
+                    <input type="text" formControlName="PersonID" nbInput shape="rectangle" hidden>
+                    <label style="margin-right: 50px;">Name</label><input type="text" formControlName="Name" nbInput shape="rectangle">
+                    
+                    <label style="margin-left: 40px; margin-right: 125px;">Surname</label><input type="text" formControlName="Surname" nbInput shape="rectangle">
+                    <br><br>  
+                    <label>Residential Address</label><textarea nbInput fullWidth formControlName="Address" ></textarea><br><br>
+                    <label style="margin-right: 50px;">Suburb</label><input type="text" formControlName="Suburb" nbInput shape="rectangle" >
+                     
+                    <label style="margin-left: 60px; margin-right: 125px;">City</label><input type="text" formControlName="City" nbInput shape="rectangle">
+                  
+                    <br><br>
+                    <label style="margin-right: 50px;">Number</label><input type="text" formControlName="Number" nbInput shape="rectangle" >
+                     
+                    <label style="margin-left: 60px; margin-right: 125px;">Email</label><input type="text" formControlName="Email" nbInput shape="rectangle">
+                  
+                    <br><br>
+
+                    <button nbButton status="basic" type="submit">Update</button>
+                </nb-card-body>
+            </nb-card>
+        </form>
+    </nb-layout-column>
+</nb-layout>

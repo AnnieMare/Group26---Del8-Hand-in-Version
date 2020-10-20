@@ -1,0 +1,74 @@
+<nb-layout>
+  
+  <!-- nav bar start -->
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+    <div class="header-container">
+    <nb-actions size="medium"  >
+       <nb-action icon="email-outline"
+                 
+                 title="Invitations"
+                 link="/ViewInvitation"
+                 >
+      </nb-action>
+      <nb-action icon="message-circle-outline"
+                 title="Announcements"
+                 link="/ViewAnnouncement">
+      </nb-action>
+      <nb-action id="user">
+        <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+      </nb-action>
+      <nb-action>
+          <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+      </nb-action>
+     </nb-actions>
+    </div>
+
+
+  </nb-layout-header>
+
+  <nb-sidebar state="compacted">
+          <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <!-- nav bar end -->
+  <nb-layout-column class="colored-column-basic">
+    <nb-card>
+      <nb-card-header>
+        <div style="float: left;"> <h3>Organisational structure position</h3></div>
+        <a href="http://localhost:8080/MaintainOrganisationalStructureP.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+      </nb-card-header>
+    <nb-card-body>
+      <form [formGroup]="OrgStructSearch" (ngSubmit)="SearchPositions(OrgStructSearch.value)"> 
+        <label style="margin-right: 60px;">Organisational structure level</label><nb-select placeholder="Select Level" formControlName="OrgStructLevel">
+          <nb-option value="0">View All</nb-option>
+          <nb-option *ngFor="let structLevel of OrgStructPosLevel" [(value)]="structLevel.OrgStructLevel">{{structLevel.OrgStructLevel}} - {{structLevel.OrgIndivPos}}</nb-option>
+        </nb-select> <button class="next-button" nbButton style="margin-right: 5px; margin-left: 15px;" type="submit">Search</button>
+        <button class="next-button" type="button" nbButton style="margin-right: 5px; margin-left: 5px;float: right;" routerLink="/AddOrganisationalStructurePosition" *ngIf="UserManagement"><nb-icon icon="plus-outline"></nb-icon> Create Position</button>
+        <button class="next-button" type="button" nbButton style="margin-right: 5px; margin-left: 5px;float: right;" routerLink="/AssignOrganisationalStructurePosition"><nb-icon icon="person-outline"></nb-icon> Assign Position</button>
+      </form>
+      <br>
+          <table>
+              <tr>
+                <th>Organisational Structure Level</th>
+                <th>Organisational Structure Type</th>
+                <th>Organisational Structure Position</th>
+                <th>Report To</th>
+                <th style="text-align: center;" *ngIf="UserManagement">Maintain</th>
+              </tr>
+              <tbody *ngFor="let position of OrgStructPos">
+              <tr>
+                  <td>{{position.OrgStructLevel}}</td>
+                <td>{{position.OrgStructType}}</td>
+                <td>{{position.OrgIndivPos}} - {{position.Description}}</td>
+                <td>{{position.OrgSTructReportToPosition}} - {{position.OrgSTructReportTo}}</td>
+              <td style="text-align: center;" *ngIf="UserManagement">
+                  <button nbButton size="small" routerLink="/EditOrganisationalStructurePosition/{{position.OrgStructID}}" ><nb-icon icon="edit-outline" nbTooltip="Edit" nbTooltipPlacement="top"></nb-icon></button>
+                  <button nbButton size="small" style="margin-left:7px" [disabled]="!position.PositionAssigned"  (click)="deletePosition(position)" nbTooltip="Delete" nbTooltipPlacement="top"><nb-icon icon="trash-2-outline"></nb-icon></button></td>
+              </tr>
+            </tbody>
+            </table>
+      </nb-card-body>
+    </nb-card>
+    </nb-layout-column>
+</nb-layout>

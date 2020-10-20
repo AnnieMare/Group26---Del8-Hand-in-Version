@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAA;EACJ,MAAM,EAAC,GAAG;CACX;;AACD,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,IAAI;EACX,KAAK,EAAE,GAAG;EACV,OAAO,EAAE,MAAM;CAChB;;AACD,AAAA,IAAI,CAAC;EAAC,MAAM,EAAE,MAAM;CAAG;;AAEvB,AAAA,OAAO,CAAA;EACL,MAAM,EAAE,GAAG;CACZ;;AACD,AAAA,OAAO,CAAA;EACL,MAAM,EAAE,GAAG;CAKZ;;AAND,AAEE,OAFK,CAEL,YAAY,CAAA;EACV,MAAM,EAAE,GAAG;CAEZ",
+    "sources": [
+        "maintain-org-indiv-pos.component.scss"
+    ],
+    "names": [],
+    "file": "maintain-org-indiv-pos.component.css"
+}

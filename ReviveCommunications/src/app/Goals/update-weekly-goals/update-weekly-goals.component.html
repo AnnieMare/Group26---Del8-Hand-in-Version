@@ -1,0 +1,252 @@
+<nb-layout>
+  
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+                   
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+      <div >
+        <form [formGroup]="HomecellAttendance" (ngSubmit)="updateHomecellAttGoalForm(HomecellAttendance.value)">
+        <nb-card >
+            <nb-card-header>
+              <div style="float: left;"> <h3>Update Homecell Attendance Goal</h3></div>
+            </nb-card-header>
+          <nb-card-body>
+              <label style="margin-right: 180px;">Date</label><input type="date" nbInput  shape="rectangle"  formControlName="Date"><br><br>
+              <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                  <nb-option value="1">Lali</nb-option>
+                  <nb-option value="2">Individual</nb-option>
+                </nb-select><br><br>
+            <label style="margin-right: 250px;">Leaders</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Leaders"><br><br>
+            <label style="margin-right: 242px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Members"><br><br>
+            <label style="margin-right: 255px;">Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Visitors"><br><br>
+            <label style="margin-right: 185px;">First Time Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="FirstTimeVisitors"><br><br>
+            <label style="margin-right: 235px;">Salvations</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Salvations"><br><br>
+            <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden>
+            <div style="width: 405px;">
+              <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+            </div>
+          <div style="margin-left: 255px;">
+          <button class="next-button" type="button" nbButton style="margin-right: 5px;" >Back</button><button class="next-button" type="submit" nbButton >Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div >
+        <form [formGroup]="ZoneChurchAttendance" (ngSubmit)="updateZoneChruchAttGoalForm(ZoneChurchAttendance.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Zone Church Attendance Goal</h3></div>
+          </nb-card-header>
+          <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date" nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+          <label style="margin-right: 250px;">Leaders</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Leader"><br><br>
+          <label style="margin-right: 242px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Member"><br><br>
+          <label style="margin-right: 255px;">Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Visitors"><br><br>
+          <label style="margin-right: 185px;">First Time Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="FirstTimeVisitors"><br><br>
+          <label style="margin-right: 235px;">Salvations</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Date"  formControlName="Salvations"><br><br>
+          <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden >
+          <div style="width: 405px;">
+            <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+          </div>
+        <div style="margin-left: 255px;">
+        <button class="next-button" type="button" nbButton style="margin-right: 5px;" >Back</button><button class="next-button" type="submit" nbButton >Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div >
+        <form [formGroup]="ChurchAttendance" (ngSubmit)="updateChurchAttGoalForm(ChurchAttendance.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Church Attendance Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+          <label style="margin-right: 180px;">Date</label><input type="date"nbInput  shape="rectangle"  formControlName="Date"><br><br>
+          <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+              <nb-option value="1">Lali</nb-option>
+              <nb-option value="2">Individual</nb-option>
+            </nb-select><br><br>
+              <label style="margin-right: 250px;">Leaders</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Leader"><br><br>
+          <label style="margin-right: 242px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Member"><br><br>
+          <label style="margin-right: 255px;">Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Visitors"><br><br>
+          <label style="margin-right: 185px;">First Time Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="FirstTimeVisitors"><br><br>
+          <label style="margin-right: 235px;">Salvations</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Salvations">
+          <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden ><br><br>
+          <div style="width: 405px;">
+            <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+          </div>
+        <div style="margin-left: 255px;">
+        <button class="next-button" type="button" style="margin-right: 5px;" >Back</button><button class="next-button" type="submit" >Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div *ngIf="UpdateZoneHomecellAttendance">
+        <form [formGroup]="ZoneHomecellAttendance" (ngSubmit)="updateZoneHomecellAttendanceGoalForm(ZoneHomecellAttendance.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Zone Homecell Attendance Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date"nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+              <label style="margin-right: 250px;">Leaders</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Leaders"><br><br>
+              <label style="margin-right: 242px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Members"><br><br>
+              <label style="margin-right: 255px;">Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Visitors"><br><br>
+              <label style="margin-right: 185px;">First Time Visitors</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="FirstTimeVisitors"><br><br>
+              <label style="margin-right: 235px;">Salvations</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Date"  formControlName="Salvations"><br><br>
+              <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden>
+              <div style="width: 405px;">
+                <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+              </div>
+            <div style="margin-left: 255px;">
+            <button class="next-button" type="button" nbButton style="margin-right: 5px;" >Back</button><button class="next-button" type="submit" nbButton>Update</button>
+            </div><br>
+            </nb-card-body>
+            </nb-card>
+            </form>
+        </div>
+        
+        <div *ngIf="UpdateNewMemberOrientation">
+        <form [formGroup]="NewMemberOrientation" (ngSubmit)="updateNewMemberOrientationGoalForm(NewMemberOrientation.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update New Member Orientation Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date"nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+          <label style="margin-right: 215px;">Monthly Total</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="MonthTotal"><br><br>
+          <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden ><br><br>
+          <div style="margin-left: 255px;">
+          <button class="next-button" type="button" nbButton style="margin-right: 5px;"  >Back</button><button class="next-button" nbButton type="submit">Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div *ngIf="UpdateDiscipleship">
+        <form [formGroup]="Discipleship" (ngSubmit)="updateDiscipleshipGoalForm(Discipleship.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Discipleship Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date"nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+              <label style="margin-right: 115px;">Discipleship</label><nb-select placeholder="Select Type"  formControlName="DiscipleshipType">
+                  <nb-option *ngFor="let discipleship of discipleshipTypes" value="{{discipleship.DiscipleshipDescription}}">{{discipleship.DiscipleshipDescription}}</nb-option>
+                </nb-select><br><br>
+          <label style="margin-right: 225px;">Attendance</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Attendance"><br><br>
+          <div style="width: 405px;">
+              <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+            </div>
+            <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden ><br><br>
+          <div style="margin-left: 255px;">
+          <button class="next-button" nbButton style="margin-right: 5px;" type="button"  >Back</button><button class="next-button" type="submit" nbButton >Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div *ngIf="UpdateStructureGrowth">
+        <form [formGroup]="StructureGrowth" (ngSubmit)="updateStructureGrowthGoalForm(StructureGrowth.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Structure growth Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date" nbInput shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+         <label style="margin-right: 247px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Members"><br><br>
+         <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden ><br><br>
+         <div style="width: 405px;">
+              <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+            </div>
+          <div style="margin-left: 255px;">
+          <button class="next-button" nbButton style="margin-right: 5px;" type="button"  >Back</button><button class="next-button" type="submit" nbButton >Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+        </div>
+        
+        <div *ngIf="UpdateZoneGrowth">
+        <form [formGroup]="ZoneGrowth" (ngSubmit)="updateZoneGrowthGoalForm(ZoneGrowth.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update Zone Growth Goal</h3></div>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date</label><input type="date" nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer</label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+                <nb-option value="1">Lali</nb-option>
+                <nb-option value="2">Individual</nb-option>
+              </nb-select><br><br>
+              <label style="margin-right: 247px;">Members</label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="Members"><br><br>
+              <div style="width: 405px;">
+                  <label>Description</label><br><br><textarea nbInput fullWidth  formControlName="Description"></textarea><br><br>
+                </div>
+                <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden ><br><br>
+              <div style="margin-left: 255px;">
+              <button class="next-button" type="button" style="margin-right: 5px;"  >Back</button><button class="next-button" type="submit" >Update</button>
+            </div><br>
+            </nb-card-body>
+            </nb-card>
+            </form>
+            </div>
+    </nb-layout-column>
+    </nb-layout>

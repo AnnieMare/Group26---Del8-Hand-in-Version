@@ -1,0 +1,52 @@
+
+
+
+    <!-- nav bar start -->
+ 
+    <!-- nav bar end -->
+  
+    <nb-layout-column class="colored-column-basic">
+  <!-- Content on page START -->
+  <nb-layout>
+
+    <nb-layout-column class="colored-column-basic">
+        <form [formGroup]="reactivate" (ngSubmit)="onClick(reactivate.value)">
+      <nb-card>
+        <nb-card-header>Request to reactivate 
+          <a href="http://localhost:8080/Requesttoreactivate.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+        </nb-card-header>
+        <nb-card-body>
+          
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="assets/CRC(No Background).png" alt="CRC Logo" class="avatar">
+            </div>
+          <div style="text-align: center;">
+            <input type="text" nbInput  ngModel name="Username" formControlName="Username"  placeholder="Username">
+            <b><div *ngIf="reactivate.controls['Username'].invalid && (reactivate.controls['Username'].dirty || reactivate.controls['Username'].touched)" class="alert alert-danger">
+              <div *ngIf="reactivate.controls['Username'].errors.required" style="color: red; ">
+              **Username is required.
+            </div>
+          </div></b>
+            <input type="password" nbInput  name="Password"  formControlName="Password"  placeholder="Password">
+            <b><div *ngIf="reactivate.controls['Password'].invalid && (reactivate.controls['Password'].dirty || reactivate.controls['Password'].touched)" class="alert alert-danger">
+              <div *ngIf="reactivate.controls['Password'].errors.required" style="color: red; ">
+              **Password is required.
+            </div>
+          </div></b>
+          </div>
+        </nb-card-body>
+        <nb-card-footer> 
+          <div style="text-align: center;">
+            <div class="logindiv"><button nbButton status="basic" [disabled]="!reactivate.valid"  type="submit">Reactivate</button>
+              <button nbButton status="basic" routerLink="/">cancel</button>
+            </div></div>
+          
+          </nb-card-footer>
+      </nb-card>
+    </form>
+    </nb-layout-column>
+    </nb-layout>
+  
+  <router-outlet></router-outlet>

@@ -1,0 +1,100 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+
+    <nb-layout-column class="colored-column-basic">
+<form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+  <input type="text"  name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" hidden >
+  <!-- #createdAnnouncement="ngForm" -->
+<nb-card>
+  <nb-card-header>
+    <a href="http://localhost:8080/PostAnnouncement.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+  </nb-card-header>
+  <nb-card-body>
+    <nb-stepper orientation="horizontal" disableStepNavigation>
+<!-- ************************SELECT RECIPIENTS ************************************-->
+      <nb-step label="Select Recipients" >
+        <h4>Select Recipients</h4>
+        <nb-card>
+          <nb-card-header>
+            Select Announcement Recipients
+          </nb-card-header>
+          <nb-list>
+            <nb-list-item *ngFor="let person of Persons; let i = index">
+              <nb-checkbox (change)="changeSelection()" #Receiver_list="ngModel"  name="Receiver_list" [(ngModel)]="person.isChecked" >{{person.Name}}  {{person.Surname}}</nb-checkbox>
+            </nb-list-item>
+          </nb-list>
+          <input type=text name="SelectedReceivers"  [(ngModel)]="SelectedReceivers" hidden>
+        </nb-card>
+        <button class="prev-button" nbButton nbStepperPrevious disabled>prev</button>
+        <button class="next-button" nbButton nbStepperNext >next</button>
+      </nb-step>
+
+<!-- ************************ WRITE ANNOUNCEMENT ************************************-->
+
+      <nb-step label="Write Announcement" [stepControl]="AnnouncementContent">
+        <h4>Write Announcement</h4>
+        <textarea nbInput fullWidth placeholder="Announcement Content"   name="AnnouncementDetail" ngModel #AnnouncementDetail="ngModel"  required class="x" ></textarea>
+        <div *ngIf="AnnouncementDetail.invalid && (AnnouncementDetail.dirty || AnnouncementDetail.touched)"
+        style="color:tomato;float: right">
+      <div *ngIf="AnnouncementDetail.errors.required">
+         *required.
+      </div>
+      </div>
+        <button class="prev-button" nbButton nbStepperPrevious >prev</button>
+        <button class="next-button" nbButton nbStepperNext>next</button>
+      </nb-step>
+
+<!-- ************************ CONFIRM MESSAGE AND SEND ************************************-->
+
+      <nb-step label="Send" >
+        <ng-template><i class="paper-plane-outline"></i></ng-template>
+        <h4>Post Announcememnt</h4>
+        <div>
+          <p><strong>Are you sure you want to send this message?</strong></p>
+          <p>{{AnnouncementDetail.value}}</p>
+          <nb-list-item style="border:0em">
+            <nb-checkbox [checked]="checkbox1" (change)="checkbox1 = !checkbox1" required>Confirm</nb-checkbox>
+          </nb-list-item>
+
+        </div>
+        <button class="prev-button" nbButton nbStepperPrevious>prev</button>
+        <button class="next-button" nbButton type="submit" [disabled]="!checkbox1" nbStepperNext>Send</button>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>
+</form></nb-layout-column>
+</nb-layout>

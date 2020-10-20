@@ -1,0 +1,80 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+        <nb-card [nbSpinner]="loading" nbSpinnerStatus="success">
+            <nb-card-header>
+                <b>KidsChurch</b>
+                <a href="http://localhost:8080/KidsChurch.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+            </nb-card-header><br><br>
+        <nb-card-body>
+            <!-- <form [formGroup]="search" (ngSubmit)="ChildSearch(search.value)">
+                <input type="text" nbInput shape="rectangle" formControlName="Name"><button class="next-button" type="submit" nbButton style="background-color: transparent; border:none; color: white; margin-right: 5px;" ><nb-icon icon="search-outline"></nb-icon></button><br><br>
+            </form>
+            <form [formGroup]="OrgStructPos1" (ngSubmit)="MemberGet(OrgStructPos1.value)">
+            <input formControlName="ChildID"><br>
+            </form> -->
+            <button nbButton style="margin-right: 10px; background-color: transparent; border: none; color:white" routerLink="/AddChild"><nb-icon icon="person-add-outline"></nb-icon>Add Child</button>
+            <button *ngIf="enable_buttons" nbButton style="margin-right: 10px; background-color: transparent; border: none; color:white" routerLink="/Check-in"><nb-icon icon="person-add-outline"></nb-icon>Check-in Child</button>
+            <button nbButton style="margin-right: 10px; background-color: transparent; border: none; color:white" routerLink="/RegisterChild"><nb-icon icon="person-add-outline"></nb-icon>Register Child</button>
+            <button *ngIf="enable_buttons" nbButton style="margin-right: 10px; background-color: transparent; border: none; color:white" routerLink="/SignOutChild" (click)="toggleLoadingAnimation()"><nb-icon icon="person-done-outline"></nb-icon>Sign-out Child</button>
+            <div *ngIf="NoChildren != null" style="text-align: center; color: teal; margin-top: 25px; margin-bottom: 25px;">
+                <p>{{NoChildren}}</p>
+            </div>
+            <table *ngIf="NoChildren == null">
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Kids Church Class</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let child of myChildren">
+                    <td>{{child.Name}} <input value="{{child.ChildID}}" hidden></td>
+                    <td>{{child.Surname}}</td>
+
+                    <td>
+                        {{child.KidsChurchName}}
+                    </td>
+                    <td>
+                        <button nbButton style="background-color: transparent; border: none; color:white" routerLink="/UpdateChild" (click)="setData(child)"><nb-icon icon="edit-outline"></nb-icon>Update</button>
+                        <button nbButton style="margin-right: 10px; background-color: transparent; border: none; color:white" (click)="onRemove(child)"><nb-icon icon="trash-2-outline"></nb-icon>Delete</button>
+                    </td>
+
+                </tr>
+            </table>
+        </nb-card-body>
+        </nb-card>
+    </nb-layout-column>
+</nb-layout>
+

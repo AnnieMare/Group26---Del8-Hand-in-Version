@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "view-member-dialog.component.scss"
+    ],
+    "names": [],
+    "file": "view-member-dialog.component.css"
+}

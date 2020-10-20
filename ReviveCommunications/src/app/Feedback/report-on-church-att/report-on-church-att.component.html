@@ -1,0 +1,131 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+<nb-layout-column class="colored-column-basic">
+    <form #ReportOnChurchAtt="ngForm" class="form-group" (ngSubmit)="AddChurchAttform(ReportOnChurchAtt.value)">
+                  <input type="number" hidden name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" >
+
+        <nb-card>
+            <nb-card-header>
+                <h1 >Report on Church Attendance</h1>
+            </nb-card-header>
+            <nb-card-body  >
+                <input type=text name="ChurchAttGoalID" (ngModel)="ChurchAttGoalID" hidden>
+
+                <label style="margin-right: 250px;">Date:</label>
+                <input type="date"nbInput  shape="rectangle" name="Date" ngModel #Date="ngModel"  required><br><br>
+
+                <div *ngIf="Date.invalid && (Date.dirty || Date.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Date.errors.required">
+                        *Date is required.
+                    </div>
+                </div>
+
+                <label style="margin-right: 200px;">Description:</label>
+                <input type="text" style="width: 200px;" nbInput  shape="rectangle" name="Description" ngModel #Description="ngModel" minlength="2" required><br><br>
+
+                <div *ngIf="Description.invalid && (Description.dirty || Description.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Description.errors.required">
+                        *Description is required.
+                    </div>
+                    <div *ngIf="Description.errors.minlength">
+                        *Description must be full
+                    </div>
+                </div>
+
+                <label style="margin-right: 215px;">Leader:</label>
+                <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="Leader" ngModel #Leader="ngModel" required><br>
+
+                <div *ngIf="Leader.invalid && (Leader.dirty || Leader.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Leader.errors.required">
+                        *Leader is required.
+                    </div>
+                    <div *ngIf="Leader.errors.minlength">
+                        *Leader must be full
+                    </div>
+                </div>
+
+                <label style="margin-right: 215px;">Visitors:</label>
+                <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="Visitors" ngModel #Visitors="ngModel"  required><br>
+
+                <div *ngIf="Visitors.invalid && (Visitors.dirty || Visitors.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Visitors.errors.required">
+                        *Visitors is required.
+                    </div>
+                </div>
+
+                <label style="margin-right: 150px;">First time Visitors:</label>
+                <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="FirstTimeVisitors" ngModel #FirstTimeVisitors="ngModel"  required><br>
+
+                <div *ngIf="FirstTimeVisitors.invalid && (FirstTimeVisitors.dirty || FirstTimeVisitors.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="FirstTimeVisitors.errors.required">
+                        *FirstTimeVisitors is required.
+                    </div>
+                </div>
+
+                <label style="margin-right: 200px;">Salvations:</label>
+                <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="Salvations" ngModel #Salvations="ngModel"  required><br>
+
+                <div *ngIf="Salvations.invalid && (Salvations.dirty || Salvations.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Salvations.errors.required">
+                        *Salvations is required.
+                    </div>
+                </div>
+
+                <label style="margin-right: 200px;">Members:</label>
+                <input nbInput type="number" placeholder="eg. 1" style="width: 200px; margin:1em;" shape="rectangle" name="Member" ngModel #Member="ngModel" required><br>
+
+                <div *ngIf="Member.invalid && (Member.dirty || Member.touched)"
+                    style="color:tomato; float: right">
+                    <div *ngIf="Member.errors.required">
+                        *Member is required.
+                    </div>
+                </div>
+
+            </nb-card-body>
+            <nb-card-footer >
+                <button nbButton style="margin: 15px;"  [disabled]= "ReportOnChurchAtt.invalid">Submit</button><button nbButton type="button" style="margin: 15px;" routerLink="/ViewGroupType">Back</button>
+            </nb-card-footer>
+        </nb-card>
+        </form>
+
+
+</nb-layout-column>
+</nb-layout>

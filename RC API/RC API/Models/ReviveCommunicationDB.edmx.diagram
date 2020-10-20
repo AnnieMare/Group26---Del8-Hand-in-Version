@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e74488d135f7433cb4ec617438a761db" Name="Diagram1">
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Activation_Status" Width="1.5" PointX="0.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Announcement" Width="1.5" PointX="6" PointY="50" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Audit_Trail" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Child" Width="1.5" PointX="9" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Church_Attendance_Feedback" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Church_Attendance_Goal" Width="1.5" PointX="6" PointY="59" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Church_Banking_Details" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.City" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Counselling" Width="1.5" PointX="6" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Counselling_Request" Width="1.5" PointX="8.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Country" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Discipleship" Width="1.5" PointX="6" PointY="53.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Discipleship_Feedback" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Discipleship_Goal" Width="1.5" PointX="9" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Goal_Access" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Group_Type" Width="1.5" PointX="3.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Homecell_Attendance_Feedback" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Homecell_Attendance_Goal" Width="1.5" PointX="9" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Homecell_Notes" Width="1.5" PointX="13.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Invitation" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.KidsChurch" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Leader_Follow_Up" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Member_Follow_Up" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Members_Serve_Follow_Up" Width="1.5" PointX="5.25" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.NMO_Feedback" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.NMO_Follow_Up" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.NMO_Goal" Width="1.5" PointX="6" PointY="56" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Organisational_Group" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Organisational_Individual_Position" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Organisational_Structure_Position" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Organisational_Structure_Type" Width="1.5" PointX="6" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Overseer_Follow_Up" Width="1.5" PointX="5.25" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Person" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Person_Announcement" Width="1.5" PointX="8.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Person_Children" Width="1.5" PointX="11.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Person_Discipleship" Width="1.5" PointX="8.25" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Person_Invitation" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Province" Width="1.5" PointX="1.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Salvation" Width="1.5" PointX="14.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Sentiment_Analysis" Width="1.5" PointX="6" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Structure_Growth_Feedback" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Structure_Growth_Goal" Width="1.5" PointX="6" PointY="63.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Suburb" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Use_Cases" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Church_Attendance_Feedback" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Church_Attendance_Goal" Width="1.5" PointX="9" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Growth_Feedback" Width="1.5" PointX="14.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Growth_Goal" Width="1.5" PointX="12" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Homecell_Attendance_Feedback" Width="1.5" PointX="14.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.Zone_Homecell_Attendance_Goal" Width="1.5" PointX="12" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ReviveCommunicationsDBModel.OutstandingDiscipleship" Width="1.5" PointX="15.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person__Activati__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_An__Annou__681373AD" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Audit_Tra__Perso__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_Ch__Child__5F7E2DAC" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Church_At__Churc__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Church_At__OrgIn__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__City__ProvID__3A4CA8FD" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Suburb__CityID__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Counselli__Couns__6166761E" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Counselli__Perso__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Counselli__WordI__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Province__Countr__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_Di__Disci__65370702" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Disciples__Disci__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Disciples__OrgIn__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__Group__40058253" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Homecell___Homec__72910220" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Homecell___OrgIn__73852659" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_In__Invit__6AEFE058" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_Ch__KidsC__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Leader_Fo__Perso__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Member_Fo__Perso__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Members_S__Perso__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__NMO_Feedb__NMOGo__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__NMO_Feedb__OrgIn__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__NMO_Follo__Perso__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__OrgGr__4A8310C6" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__Subur__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__OrgIn__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Structure__OrgIn__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Chur__OrgIn__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Grow__OrgIn__1D7B6025" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Home__OrgIn__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__OrgSt__47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__OrgSt__498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Organisat__Perso__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Overseer___Perso__58D1301D" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_An__Perso__690797E6" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_Ch__Perso__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_Di__Perso__662B2B3B" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Person_In__Perso__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Structure__Struc__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Chur__ZoneC__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Grow__Zoneg__1C873BEC" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.FK__Zone_Home__ZoneH__7E02B4CC" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.Indiv_Pos_Goal_Access" ManuallyRouted="false" />
+        <AssociationConnector Association="ReviveCommunicationsDBModel.Org_Level_Use_Case" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Discipleship Followup</ion-title>
+
+  <br> 
+  <div>
+  <ion-item>
+    <ion-icon name="trending-up-outline" slot="start"></ion-icon>
+    <ion-label>Progress</ion-label>
+    <ion-button fill="outline" slot="end" (click)="Check()">View</ion-button>
+  </ion-item>
+  <div *ngIf="ProgressCheck">
+    <div *ngFor="let p of followUpList">
+  <ion-item>
+    <ion-label>Total:</ion-label>
+    <ion-badge color="danger" slot="end">{{p.FollowUpPorgress.Total}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-label>Completed:</ion-label>
+    <ion-badge color="success" slot="end">{{p.FollowUpPorgress.Completed}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-label>Remaining:</ion-label>
+    <ion-badge color="warning" slot="end">{{p.FollowUpPorgress.Remaining}}</ion-badge>
+  </ion-item>
+</div>
+</div>
+  <br>
+  <ion-item>
+    <ion-label>Follow-ups remaining:</ion-label>
+  </ion-item>
+ 
+
+<ion-list *ngFor="let p of followUpList">
+  <form #FollowUp="ngForm" (ngSubmit)="onSubmit(FollowUp.value)">
+   <!-- Sliding item with expandable options on both sides -->
+  <ion-item-sliding  *ngFor="let x of p.MemberList, let i=index">
+    <ion-item-options side="start">
+      <ion-item-option color="success" expandable>
+        Call
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label>{{x.PersonName}} {{x.PersonSurname}}<br>
+        {{x.PersonNumber}}
+       </ion-label>
+       <input [(ngModel)]="x.PersonID" [name]=" 'Person' +  [i]" hidden>
+       <ion-item style="width: 5em;">
+        <ion-icon name="chevron-down-circle-outline"></ion-icon>
+        <ion-select (ionChange)="changeSelection($event)">
+        <ion-select-option  *ngFor="let uc of x.Discipleships,  let i=index"   value="{{uc.Discipleship[0].DiscipleshipID}}" >{{uc.Discipleship[0].DiscipleshipDescription}}</ion-select-option>
+        
+      </ion-select>
+     <input type="text" name="Person_Discipleship" hidden [(ngModel)]="Person_Discipleship">
+    </ion-item>
+    </ion-item>
+
+    <ion-item-options side="end">
+
+      <ion-item-option (click)="onSubmit(FollowUp.value)" color="secondary">
+        Completed
+      </ion-item-option>
+    </ion-item-options>
+
+
+  
+  </ion-item-sliding>
+</form>
+</ion-list>
+
+
+

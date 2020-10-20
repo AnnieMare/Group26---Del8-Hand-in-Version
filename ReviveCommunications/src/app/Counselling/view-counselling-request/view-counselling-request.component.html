@@ -1,0 +1,99 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+
+<form [formGroup]="CounsellingType" >
+    <nb-card>
+        <nb-card-header>
+            <h1 style="text-align: center;">Counselling Request</h1>
+        </nb-card-header>
+        <nb-card-body style="align-content: center; text-align: center;" >
+            
+
+                    <!--<label style="float: left;">Counselling ID: {{CounsellingType.CounsellingRequestID}}</label>-->
+                    <h4>Member details</h4>
+                    <div style="text-align: center; width: 50%; margin: auto;"> 
+                    <label style="float: left;" >Person ID:</label>
+                    <label style="float: right;"> {{CounsellingType.PersonID}}</label><br>
+                     
+                    <label style="float: left;" >Person Name: </label>
+                    <label style="float: right;">{{CounsellingType.Person.Name}}</label><br>
+                
+                    
+                
+                    <label style="float: left;" >Person Number: </label>
+                    <label style="float: right;">{{CounsellingType.PhoneNumber}}</label><br>
+
+                    <label style="float: left;" >Person Email: </label>
+                    <label style="float: right;">{{CounsellingType.Person.Email}}</label><br>
+                </div>    
+                    <br>            
+
+        </nb-card-body>
+        <nb-card-body>
+            <div style="text-align: center; ">
+                <label style="text-align: center; align-content: center;">Counselling Description:</label><br>
+            </div>
+               
+                <div style="text-align: center; ">
+                    {{CounsellingType.CounsellingDescription}}
+                </div>
+                <div style="align-content: center; text-align: center;">
+                    <form class="contact-form"  (submit)="sendEmail($event)">
+                        
+                        <input nbInput type="text" name="user_name"  style="margin-left: 5px;" [(ngModel)]="CounsellingType.Person.Name" hidden>
+                        <br><br>
+                               
+                        <input nbInput name="user_email" style="margin-left: 7.5px;" [(ngModel)]="CounsellingType.Person.Email" hidden>
+                        <br><br>
+                
+                        <label>Response Message:</label><br>
+                        <textarea nbInput fullWidth name="message" required></textarea>
+                        <br>
+                        <nb-card-footer style="align-content: center; text-align: center;">
+                            <input nbButton type="submit" value="Reply">
+                            <button nbButton type="button" style="margin: 15px;"  routerLink="/ViewCounselling">Back</button>
+                        </nb-card-footer>
+                        
+                    </form>
+                </div>
+        </nb-card-body>
+    </nb-card>
+</form>
+
+
+
+</nb-layout-column>
+</nb-layout>

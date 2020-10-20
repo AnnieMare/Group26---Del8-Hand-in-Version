@@ -1,0 +1,82 @@
+<nb-layout>
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+  
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+  
+  
+    </nb-layout-header>
+  
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+  
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+          <nb-card>
+              <nb-card-header>
+              <h1>Place in Homecell </h1><a href="http://localhost:8080/PlaceinHC.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+              </nb-card-header>
+            <nb-card-body>
+              <form [formGroup]="SuburbForm" (ngSubmit)="searchHomecell(SuburbForm.value)">
+                  <label style="margin-right: 65px;">Suburb</label><nb-select placeholder="Select Suburb" formControlName="SuburbID">
+                      <nb-option *ngFor="let suburbs of MemberSuburbs" [(value)]="suburbs.SuburbID">{{suburbs.SuburbName}}</nb-option>
+                    </nb-select><button class="next-button" type="submit" nbButton style="margin-right: 5px; margin-left: 5px;" nbTooltip="Search" nbTooltipPlacement="top" [disabled]="!disableSearch"><nb-icon icon="search-outline"></nb-icon></button>
+                  </form>
+                  <br>
+              <form [formGroup]="PersonForm" (ngSubmit)="PlaceMember(PersonForm.value)">
+          <label style="margin-right: 50px;">Homecell</label><nb-select placeholder="Select Homecell" formControlName="Group">
+              <nb-option *ngFor="let position of OrgStructPos" [(value)]="position.OrgGroupID">{{position.Description}}</nb-option>
+            </nb-select><button class="next-button" type="submit" nbButton style="margin-right: 5px; margin-left: 10px;" nbTooltip="Place Member in Homecell" nbTooltipPlacement="top" [disabled]="!disableSearch"> Place </button>
+          </form>
+            <br>
+            <hr>
+            <h1>Member</h1>
+            <table>
+              <tr>
+                  <th>Name</th>
+                  <th>Surname</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>Suburb</th>
+                  <th>Homecell</th>
+              </tr>
+              <tr *ngFor="let member of members">
+                  <td>{{member.Name}}</td>
+                  <td>{{member.Surname}}</td>
+                  <td>{{member.Address}}</td>
+                  <td>{{member.City}}</td>
+                  <td>{{member.Suburb}}</td>
+                  <td>{{MemberHomecellGroup}}</td>
+              <tr>
+            </table>
+            <br>
+            <div>
+            <button class="next-button" type="button" nbButton style="margin-right: 5px; margin-left: 10px; float: right;" (click)="close()"> Back </button>
+            </div>
+          </nb-card-body>
+            </nb-card>
+        </nb-layout-column>
+  </nb-layout>
+  
+  

@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary">Weekly Goals</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+  
+    <br>
+    <ion-item>
+      <ion-label>Goal</ion-label>
+      <ion-select placeholder="Select Goal">
+        <ion-select-option>Homecell Attendance</ion-select-option>
+        <ion-select-option>Intercession</ion-select-option>
+        <ion-select-option>Street Ministry</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Structure</ion-label>
+      <ion-select placeholder="Select Structure">
+        <ion-select-option>Homecell Attendance</ion-select-option>
+        <ion-select-option>Intercession</ion-select-option>
+        <ion-select-option>Street Ministry</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br><div style="text-align: right;">
+    <ion-button  color="primary">Current week</ion-button>
+    <ion-button color="primary" (click)="Check()">Select week <ion-icon name="chevron-down-outline"></ion-icon></ion-button>
+  </div>
+  <div *ngIf="show">
+    <ion-item>
+      <ion-label position="floating">From:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2012-12-09"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">To:</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2012-12-09"></ion-datetime>
+    </ion-item>
+    <ion-button expand="block" color="primary">Go</ion-button>
+  </div>
+  <br>
+  <div style="text-align: left; margin-left: 0.7em;">
+    
+    <ion-button color="primary"><ion-icon name="add-outline"></ion-icon> Create</ion-button>
+  </div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Structure : Lali</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+         <ion-item>
+           <ion-label>Goal:</ion-label>
+         </ion-item>
+         <br>
+    <ion-grid >
+      <ion-row style="border-bottom: solid;">
+        <ion-col>
+          HC-L
+        </ion-col>
+        <ion-col>
+          HC-M
+        </ion-col>
+        <ion-col>
+          HC-V
+        </ion-col>
+        <ion-col>
+          HC-FTV
+        </ion-col>
+        <ion-col>
+          HC-S
+        </ion-col>
+        <ion-col>
+          Total
+        </ion-col>
+      </ion-row>
+   
+      <ion-row style="text-align: center;">
+        <ion-col>
+          6
+        </ion-col>
+        <ion-col>
+          6
+        </ion-col>
+        <ion-col>
+          3
+        </ion-col>
+        <ion-col>
+          4
+        </ion-col>
+        <ion-col>
+          1
+        </ion-col>
+        <ion-col>
+          19
+        </ion-col>
+      </ion-row>
+    
+      </ion-grid>
+    
+      <ion-item>
+        <ion-label>Feedback:</ion-label>
+      </ion-item>
+<br>
+      <ion-grid >
+        <ion-row style="border-bottom: solid;">
+          <ion-col>
+            HC-L
+          </ion-col>
+          <ion-col>
+            HC-M
+          </ion-col>
+          <ion-col>
+            HC-V
+          </ion-col>
+          <ion-col>
+            HC-FTV
+          </ion-col>
+          <ion-col>
+            HC-S
+          </ion-col>
+          <ion-col>
+            Total
+          </ion-col>
+        </ion-row>
+     
+        <ion-row style="text-align: center;">
+          <ion-col>
+            <ion-icon name="arrow-up-outline"></ion-icon>2
+          </ion-col>
+          <ion-col>
+            <ion-icon name="remove-outline"></ion-icon>0
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-up-outline"></ion-icon>1
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down-outline"></ion-icon>2
+          </ion-col>
+          <ion-col>
+            <ion-icon name="remove-outline"></ion-icon>0
+          </ion-col>
+          <ion-col>
+            <ion-icon name="arrow-down-outline"></ion-icon>4
+          </ion-col>
+        </ion-row>
+      
+        </ion-grid>
+        </ion-list>
+        <br>
+        <ion-button expand="block" color="primary">View All</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-content>

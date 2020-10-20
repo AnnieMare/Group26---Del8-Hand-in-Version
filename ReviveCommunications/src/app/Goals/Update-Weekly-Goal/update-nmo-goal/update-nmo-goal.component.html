@@ -1,0 +1,55 @@
+<nb-layout>
+  
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+                   
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+        <form [formGroup]="NewMemberOrientation" (ngSubmit)="updateNewMemberOrientationGoalForm(NewMemberOrientation.value)">
+        <nb-card >
+          <nb-card-header>
+            <div style="float: left;"> <h3>Update New Member Orientation Goal</h3></div><a href="http://localhost:8080/Updategoal.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+          </nb-card-header>
+        <nb-card-body>
+            <label style="margin-right: 180px;">Date<label style="color: red;">*</label></label><input type="date"nbInput  shape="rectangle"  formControlName="Date"><br><br>
+            <label style="margin-right: 135px;">Overseer<label style="color: red;">*</label></label><nb-select placeholder="Select Overseer"  formControlName="Overseer">
+              <nb-option *ngFor="let list of OverseerList" [(value)]="list.PersonID">{{list.Name}} {{list.Surname}}</nb-option>
+              </nb-select><br><br>
+          <label style="margin-right: 215px;">Monthly Total<label style="color: red;">*</label></label><input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1"  formControlName="MonthTotal"><br><br>
+          <input type="number" style="width: 100px;" nbInput  shape="rectangle" placeholder="eg. 1" formControlName="HomecellAttendanceGoalID" hidden >
+          <div style="margin-left: 230px;">
+          <button class="next-button" type="button" nbButton style="margin-right: 5px;" (click)="close()" >Back</button><button class="next-button" nbButton type="submit">Update</button>
+        </div><br>
+        </nb-card-body>
+        </nb-card>
+        </form>
+    </nb-layout-column>
+    </nb-layout>

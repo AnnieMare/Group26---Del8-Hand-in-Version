@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="onSubmit(groupChoice.value)">
+    <div>
+      <h1>Join up to 3 groups!</h1>
+      <div class="row>"></div>
+    </div>
+
+
+
+    <div>
+      <div class="row">
+      <ion-item>
+        <ion-label>Group1:</ion-label>
+        <ion-select placeholder="Group 1" name="Group1" [(ngModel)]="selectedGroup1">
+          <ion-selected-option *ngFor="let g of Groups" [value]="g">{{g.GroupTypeName}}</ion-selected-option>
+        </ion-select>
+      </ion-item>  
+        
+      <ion-item>
+        <ion-label>Group2:</ion-label>
+        <ion-select placeholder="Group 2" name="Group1" [(ngModel)]="selectedGroup2">
+          <ion-selected-option *ngFor="let g of Groups" [value]="g">{{g.GroupTypeName}}</ion-selected-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Group3:</ion-label>
+        <ion-select placeholder="Group 3" name="Group3" [(ngModel)]="selectedGroup3">
+          <ion-selected-option *ngFor="let g of Groups" [value]="g">{{g.GroupTypeName}}</ion-selected-option>
+        </ion-select>
+      </ion-item>  
+      </div>
+    </div>
+
+
+
+    <div style="align-content: center;">
+      <ion-button type="Submit">Join</ion-button>
+      
+
+      <ion-button type="button">Transfer</ion-button>
+
+
+      <ion-button type="button" (onClick)="History.go(-1)">Back</ion-button>
+    </div>
+  </form>
+</ion-content>

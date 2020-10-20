@@ -1,0 +1,92 @@
+<nb-layout>
+  
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+                   
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+
+<nb-card>
+    <nb-card-header>
+      <div style="float: left;"> <h3>Organisational structure position</h3></div><div>  <button class="next-button" nbButton style="background-color: transparent; border:none;float: right; color: white; margin-right: 45px;" ><nb-icon icon="person-outline"></nb-icon> Assign</button></div>
+    </nb-card-header>
+  <nb-card-body>
+    <div style="float: right;">
+      <button style="background-color: transparent; border:none;float: right; color: white; margin-right: 50px;"><nb-icon icon="edit-2-outline" ></nb-icon> Maintain</button>
+      <button style="background-color: transparent; border:none;float: right; color: white;" routerLink="/CreateOrgStructPos"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+    </div><br><br><br>
+    <angular-org-chart id="orgChartId" style="box-shadow: none;" [data]="orgData"></angular-org-chart>
+    <br>
+    <table>
+      <tr>
+        
+        <th>Organisational Structure Level</th>
+        <th>Organisational Structure Type</th>
+        <th>Organisational Structure Position</th>
+        <th>Report To</th>
+        <th>Description</th>
+        <th style="text-align: center;">Maintain</th>
+      </tr>
+      <tr>
+          <td>1</td>
+        <td>Individual</td>
+        <td>Senior Pastor</td>
+        <td>None</td>
+      <td>Head of Church</td>
+      <td style="text-align: center;">
+          <button nbButton size="small" style="background-color: transparent; border: none; color: white" routerLink="/MaintainOrgStructPos"><nb-icon icon="edit-outline"></nb-icon> Edit</button>
+          <button nbButton size="small" style="background-color: transparent; border: none; color: white" ><nb-icon icon="trash-2-outline"></nb-icon> Delete</button></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Individual</td>
+          <td>District Pastor</td>
+          <td>Senior Pastor</td>
+        <td>East DIstrict Pastor</td>
+        <td style="text-align: center;">
+          <button nbButton size="small" style="background-color: transparent; border: none; color: white" routerLink="/MaintainOrgStructPos"><nb-icon icon="edit-outline"></nb-icon> Edit</button>
+          <button nbButton size="small" style="background-color: transparent; border: none; color: white" ><nb-icon icon="trash-2-outline"></nb-icon> Delete</button></td>
+      
+        </tr>
+        <tr>
+         <td>3</td>
+          <td>Individual</td>
+          <td>Zone Pastor</td>
+          <td>District Pastor</td>
+           <td>Lynnwood Zone Pastor</td>
+           <td style="text-align: center;">
+              <button nbButton size="small" style="background-color: transparent; border: none; color: white" routerLink="/MaintainOrgStructPos"><nb-icon icon="edit-outline"></nb-icon> Edit</button>
+              <button nbButton size="small" style="background-color: transparent; border: none; color: white" ><nb-icon icon="trash-2-outline"></nb-icon> Delete</button></td>
+        </tr>
+    </table>
+  </nb-card-body>
+</nb-card></nb-layout-column>
+</nb-layout>

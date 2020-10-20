@@ -1,0 +1,70 @@
+<nb-layout>
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+      </nb-layout-header> 
+      <nb-sidebar state="compacted">
+      <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+        <nb-card>
+            <nb-card-header>
+              <h1>Homecell Notes Upload</h1>
+              <a href="http://localhost:8080/UploadHomecellnotes.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+            </nb-card-header>
+          <nb-card-body>
+                  <label style="margin-right: 10px;">Upload file</label><input type="file" class="next-button" nbButton (change)="onFileSelect($event)" accept=".pdf" style="margin-right: 5px;">
+                  <br><br>
+                  <div *ngIf="attached">
+                <hr><br>
+                <br>
+              <label style="font-size: medium;"><strong><u>Uploaded file</u></strong></label>
+              <br><br>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Date</th>
+                          <th>File Name</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><input value="{{today | date:'d-MM-yyyy'}}" style="border: none; background-color: transparent; color: white;" disabled></td>
+                          <td><nb-icon icon="file-text-outline"></nb-icon><input style="border: none; background-color: transparent; color: white;" [value]="fileName" disabled></td>
+                      </tr>
+                  </tbody>
+              </table><br>
+              <div style="float: right;">
+              <button class="next-button" nbButton style="margin-right: 5px;" routerLink="/HomecellNotes">Back</button>
+          </div>
+          </div>
+          </nb-card-body>
+        </nb-card>    
+        </nb-layout-column>
+        <nb-layout-footer fixed>
+          <img src="https://church.crc.org.za/assets/img/brand/black-with-text.png" style=" height: 30px;">
+          </nb-layout-footer>
+          
+          </nb-layout>

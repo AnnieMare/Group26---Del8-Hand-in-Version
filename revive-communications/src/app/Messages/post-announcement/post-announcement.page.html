@@ -1,0 +1,84 @@
+<ion-header>
+  <!-- NB Menu button start -->
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>   
+ 
+      <ion-thumbnail style="margin-left:45%; " >
+        <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+      </ion-thumbnail>
+      
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  <!-- Menu button end -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Post Announcement</ion-title>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <input type="text"  name="PersonID" ngModel #PersonID="ngModel" [(ngModel)]="Person.PersonID" hidden  >
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Confirm Recipients</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let p of Persons">   
+          <ion-item>     
+          <ion-checkbox  (click)="changeSelection(p)" #Receiver_list="ngModel"  name="Receiver_list" [(ngModel)]="p.isChecked"></ion-checkbox>
+          <ion-label style="margin-left: 0.5em">{{p.Name}} {{p.Surname}}</ion-label>
+        </ion-item>  
+        </ion-item>
+      </ion-list>
+      <input type=text name="SelectedReceivers"  [(ngModel)]="SelectedReceivers" hidden>
+      <ion-button expand="block" color="primary" [disabled]="SelectedReceivers.length <1" (click)='receiversSelected()'>Next</ion-button>
+    </ion-card-content>
+  
+  </ion-card>
+
+  <ion-card *ngIf="showWA === true">
+    <ion-card-header>
+      <ion-card-title>Write Announcement</ion-card-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-textarea placeholder="Announcement Content"   name="AnnouncementDetail" ngModel #AnnouncementDetail="ngModel"  required></ion-textarea>
+    </ion-item>
+    <div *ngIf="AnnouncementDetail.invalid && (AnnouncementDetail.dirty || AnnouncementDetail.touched)"
+    style="color:tomato;float: right">
+  <div *ngIf="AnnouncementDetail.errors.required">
+     *required.
+  </div>
+  </div>
+    <ion-button expand="block" color="primary"  (click)='messageCreated()' >Next</ion-button>
+
+  </ion-card>
+
+  
+  <ion-card  *ngIf="showConfirm === true">
+    <ion-card-header>
+      <ion-card-title>Confirm Announcement</ion-card-title>
+    </ion-card-header>
+
+    <ion-item> 
+      <ion-text color="danger">
+      <h5>Are you sure you want to send this message?</h5>      
+    </ion-text>
+  </ion-item>
+
+    
+    <ion-item>
+      <ion-label>Confirm</ion-label>
+      <ion-checkbox slot="start" [checked]="checkbox1"   (click)="checkbox1 = !checkbox1" required></ion-checkbox>
+    </ion-item>
+      <ion-button expand="block" type="submit" color="primary" [disabled]="checkbox1"><ion-icon name="paper-plane-outline" ></ion-icon>Send</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

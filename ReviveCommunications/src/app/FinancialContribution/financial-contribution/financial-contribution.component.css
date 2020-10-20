@@ -1,0 +1,35 @@
+label {
+  margin-right: 10px;
+}
+
+table {
+ 
+  padding: 3px;
+  width: 70%;
+  height: 60%;
+  margin-left: 180px;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #252547;
+}
+
+th {
+  background-color: #252547;
+  color: white;
+}
+
+nb-header {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+nb-user {
+  margin-left: 950px;
+}
+/*# sourceMappingURL=financial-contribution.component.css.map */

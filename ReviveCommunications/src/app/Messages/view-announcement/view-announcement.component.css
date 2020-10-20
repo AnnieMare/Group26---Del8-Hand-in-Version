@@ -1,0 +1,17 @@
+button {
+  margin-right: 1em;
+}
+
+div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+h3 {
+  margin-top: 0em;
+}
+/*# sourceMappingURL=view-announcement.component.css.map */

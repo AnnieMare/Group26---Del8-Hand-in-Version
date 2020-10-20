@@ -1,0 +1,164 @@
+<nb-layout>
+  <nb-layout-column class="colored-column-basic">
+
+
+<nb-card>
+  <nb-card-header>
+    <table>
+      <tbody>
+        <tr>
+          <td><img src="assets/CRC(No Background).png" style="width: 100px; height: 100px;"></td>
+          <td ><h3 style="margin-left: 20px;">Salvation Form</h3></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </nb-card-header>
+<nb-card-body>
+  <form [formGroup]="salvation" (ngSubmit)="addSalvationForm(salvation.value)">
+  <nb-stepper orientation="vertical" disableStepNavigation>
+    <nb-step label="Personal Information">
+      <h6>Personal Information</h6>
+      <label style="margin-right: 10px;">Alter Worker</label><input type="text" style="width: 200px" nbInput shape="rectangle" ngModel formControlName="AlterWorker">
+      <div style="float:right">
+        <label style="margin-right:110px">Date</label><input type="text" value="{{today | date:'MMMM d, yyyy'}}" nbInput shape="rectangle" disabled>
+        </div>
+      <p style="background-color: teal; color: white;">Tell us about yourself</p>
+      <div>
+        <label style="margin-right: 60px;">Title</label><nb-select placeholder="Select Title" ngModel formControlName="Title">
+            <nb-option value="Mr.">Mr.</nb-option>
+            <nb-option value="Miss.">Miss.</nb-option>
+            <nb-option value="Mrs.">Mrs.</nb-option>
+            <nb-option value="Mx.">Mx.</nb-option>
+            <nb-option value="Prof.">Prof</nb-option>
+            <nb-option value="Dr.">Dr.</nb-option>
+            <nb-option value="Ps.">Ps.</nb-option>
+          </nb-select>
+        <label style="margin-left: 40px; margin-right: 125px;">Age</label>
+        <nb-select placeholder="Select Age" ngModel formControlName="Age">
+            <nb-option value="0-5">0-5</nb-option>
+            <nb-option value="6-11">6-11</nb-option>
+            <nb-option value="12-15">12-15</nb-option>
+            <nb-option value="16-18">16-18</nb-option>
+            <nb-option value="19-25">19-25</nb-option>
+            <nb-option value="26-30">26-30</nb-option>
+            <nb-option value="31-40">31-40</nb-option>
+            <nb-option value="41-50">41-50</nb-option>
+            <nb-option value="51-60">51-60</nb-option>
+            <nb-option value="60+">60+</nb-option>
+          </nb-select><br><br>
+        <label style="margin-right: 30px;">Name</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Name">
+        <label style="margin-left: 40px; margin-right: 60px;">Marital Status</label>
+        <nb-select placeholder="Select Marital Status" ngModel formControlName="MaritualStatus">
+            <nb-option value="Maried">Maried</nb-option>
+            <nb-option value="Divorced">Divorced</nb-option>
+            <nb-option value="Single">Single</nb-option>
+            <nb-option value="Widow/er">Widow/er</nb-option>
+          </nb-select><br><br>
+        <label style="margin-right: 10px;">Surname</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Surname">
+        <label style="margin-left: 40px; margin-right: 7px;">Employment Status</label>
+        <nb-select placeholder="Select Employment Status" ngModel formControlName="EmploymentStatus">
+            <nb-option value="Employer">Employer</nb-option>
+            <nb-option value="Employed">Employed</nb-option>
+            <nb-option value="Unemployed">Unemployed</nb-option>
+            <nb-option value="Student">Student</nb-option>
+            <nb-option value="Scholar">Scholar</nb-option>
+          </nb-select><br><br>  
+          <p style="background-color: teal; color: white;">We would like to come and visit you</p>
+          <label>Residential Address</label><textarea nbInput fullWidth ngModel formControlName="ResidentialAddress" ></textarea><br><br>
+          <label style="margin-right: 30px;">Suburb</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Suburb">
+          <div style="float:right">
+          <label style="margin-right:110px">City</label><input type="text" nbInput shape="rectangle" ngModel formControlName="City">
+          </div>
+          <br><br>
+          <p style="background-color: teal; color: white;">How can we contact you?</p>
+          <label style="margin-right: 35px;">Tel (H)</label><input type="text" nbInput shape="rectangle" ngModel formControlName="HomeTelNo">
+          <label style="margin-right: 95px; margin-left: 30px">Tel (W)</label><input type="text" nbInput shape="rectangle" ngModel formControlName="WorkTelNo"><br><br>
+          <label style="margin-right: 10px;">Cellphone</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Cellphone">
+          <label style="margin-right: 100px; margin-left: 30px">E-mail</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Email">
+      </div><br><br>
+      <p style="background-color: teal; color: white;">Did someone invite you to CRC?</p>
+      <label style="margin-right: 5px;">If someone invited you, please give us his/her name</label><nb-radio (click)="enableInvite()">Yes</nb-radio><nb-radio (click)="disableInvite()">No</nb-radio>
+      <div *ngIf="Invite">
+      <label style="margin-right: 35px;">Name & Surname</label><input type="text" nbInput shape="rectangle" ngModel formControlName="NameSurnameInvite"><br><br>
+      <label style="margin-right: 45px;">Homecell leader</label><input type="text" nbInput shape="rectangle" ngModel formControlName="HomecellLeader"><br><br>
+      <label style="margin-right: 75px;">Zone Pastor</label><input type="text" nbInput shape="rectangle" ngModel formControlName="ZonePastor">
+        <br></div>
+      <div style="float: right">
+      <button class="prev-button" nbButton nbStepperPrevious style="margin-right: 5px;">prev</button>
+      <button class="next-button" nbButton nbStepperNext>next</button>
+      </div>
+    </nb-step>
+    <nb-step label="Education">
+      <h4>Education</h4>
+      <label>Please select your current information:</label>
+      <nb-radio (click)="enableSchool()">School</nb-radio>
+      <nb-radio (click)="enableUniversity()">University</nb-radio>
+      <div *ngIf="School">
+      <p style="background-color: teal; color: white;">School</p>
+      <label>Please select one of the options if applicable:</label>
+      <nb-radio value="true" ngModel formControlName="SchoolLevel">High School</nb-radio>
+      <nb-radio value="false" ngModel formControlName="SchoolLevel">Primary School</nb-radio>
+      <label style="margin-right: 170px;">Name of school:</label><input type="text" nbInput shape="rectangle" ngModel formControlName="NameOfSchool"><br><br>
+      <label style="margin-right: 250px;">Grade</label> <nb-select placeholder="Select Grade" ngModel formControlName="Grade">
+        <nb-option value="0">Grade R</nb-option>
+        <nb-option value="1">Grade 1</nb-option>
+        <nb-option value="2">Grade 2</nb-option>
+        <nb-option value="3">Grade 3</nb-option>
+        <nb-option value="4">Grade 4</nb-option>
+        <nb-option value="5">Grade 5</nb-option>
+        <nb-option value="6">Grade 6</nb-option>
+        <nb-option value="7">Grade 7</nb-option>
+        <nb-option value="8">Grade 8</nb-option>
+        <nb-option value="9">Grade 9</nb-option>
+        <nb-option value="10">Grade 10</nb-option>
+        <nb-option value="11">Grade 11</nb-option>
+        <nb-option value="12">Grade 12</nb-option>
+      </nb-select><br><br>
+      <label>Parent/Gaurdian's cellphone number<input type="text" nbInput shape="rectangle" style="float: right;" ngModel formControlName="ParentGuardianCell"><br>if under the age of 18</label><br><br>
+    </div>
+      <div *ngIf="University">
+          <p style="background-color: teal; color: white;">University</p>
+      <label style="margin-right: 150px;">Current year of study:</label><nb-select placeholder="Select year" ngModel formControlName="StudyYear">
+        <nb-option Value="1">First Year</nb-option>
+        <nb-option value="2">Second Year</nb-option>
+        <nb-option value="3">Third Year</nb-option>
+        <nb-option value="4">Post Graduate</nb-option>
+      </nb-select><br><br> 
+      <label style="margin-right: 215px;">Institution</label><input type="text" nbInput shape="rectangle" ngModel formControlName="Institution" ><br>
+          <label>Study Address</label><textarea nbInput fullWidth ngModel formControlName="StudyAddress" ></textarea><br>
+      </div>
+        <div style="float: right;">
+      <button class="prev-button" nbButton nbStepperPrevious style="margin-right: 5px">prev</button>
+      <button class="next-button" nbButton nbStepperNext>next</button>
+    </div>
+    </nb-step>
+    <nb-step label="Prayer request">
+        <h4>Do you have a prayer request?</h4>
+        <label>What would you like us to pray for?</label>
+        <textarea nbInput fullWidth ngModel formControlName="PrayerRequest"></textarea><br><br>
+        <div style="float: right;">
+        <button class="prev-button" nbButton nbStepperPrevious style="margin-right:5px">prev</button>
+        <button class="next-button" nbButton nbStepperNext>next</button>
+    </div>
+      </nb-step>
+    <nb-step label="Done">
+      <ng-template><i class="paper-plane-outline"></i></ng-template>
+      <div style="text-align: center;">
+          <h1>All done! <br> We received your information.</h1>
+          <hr>
+          <h3>We really encourage you to visit us again.</h3>
+          <p>'I say to you that likewise there will be more joy in heaven over one sinner who repents than over ninethy-nine 
+              just persons who need no repentance.'<br>
+              -Luke 15:7 (NKJV)
+          </p>
+      </div>
+        <input type="submit" class="next-button" nbButton nbStepperNext style="float: right;" value="Done">
+    </nb-step>
+  </nb-stepper>
+  </form>
+</nb-card-body>
+</nb-card>
+<label>*All information will be treated as confidential.</label>
+  </nb-layout-column>
+</nb-layout>

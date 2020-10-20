@@ -1,0 +1,184 @@
+<nb-layout>
+
+  <!-- nav bar start -->
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+    <div class="header-container">
+    <nb-actions size="medium"  >
+       <nb-action icon="email-outline"
+                 
+                 title="Invitations"
+                 link="/ViewInvitation"
+                 >
+      </nb-action>
+      <nb-action icon="message-circle-outline"
+                 title="Announcements"
+                 link="/ViewAnnouncement">
+      </nb-action>
+      <nb-action id="user">
+        <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+      </nb-action>
+      <nb-action>
+          <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+      </nb-action>
+     </nb-actions>
+    </div>
+
+
+  </nb-layout-header>
+
+
+  <nb-sidebar state="compacted">
+          <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <!-- nav bar end -->
+  <nb-layout-column class="colored-column-basic">
+
+<nb-card>
+<nb-card-header>Financial Contribution
+  <a href="http://localhost:8080/Follow-Up.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+</nb-card-header>
+
+
+<nb-card-body>
+  <form >
+    <div class="form-group" style="align-items: center;">
+      <label>Which Church would you like to contribute to:</label>
+      <br>
+      
+      <br>
+      <div style="width: 40%;">
+      <vg-player>
+        <vg-controls>
+            <vg-play-pause vgFor="singleVideo"></vg-play-pause>
+            <vg-playback-button vgFor="singleVideo"></vg-playback-button>
+      
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+      
+            <vg-scrub-bar style="color: aliceblue;" >
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+            </vg-scrub-bar>
+      
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+      
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+      
+            <vg-fullscreen></vg-fullscreen>
+        </vg-controls>
+      
+        <video #media [vgMedia]="media" id="singleVideo" preload="auto" crossorigin style="width: fit-content;">
+            <source  src="assets/Giving Video.mov" type="video/mp4">
+        </video>
+     </vg-player>
+    </div>
+     <br>
+     <br>
+      <div>
+        <button type="button" nbButton class="btn btn-info" (click)="Bloemfontein()" style="margin-right: 10px;">Bloemfontein</button>
+        <button type="button" nbButton class="btn btn-info" (click)="Pretoria()" style="margin-right: 10px;">Pretoria</button>
+        <button type="button" nbButton class="btn btn-info" (click)="Johannesburg()">Johannesburg</button>  
+      </div>
+      <br>
+      <br>
+<nb-card style="border-color: aliceblue;">
+      <div id="Bloemfontein" hidden >
+        <h2 style="text-align: center;">BLOEMFONTEIN</h2>
+        <table style="border: none;">
+         
+          <tr>
+            <td >
+              <p style="font-size: large;">
+           
+                NEDBANK
+                <br>
+                ACCOUNT NO: 1102507490
+                <br>
+        
+                BRANCH: 110234
+                <br>
+        
+                REF: NAME, SURNAME & ZONE
+                <br>
+        
+                </p>
+            </td>
+            <td>
+              <img src="assets/Bloem Giving.PNG" style="float: right; height: 300px;">
+
+            </td>
+            
+          </tr>
+        </table>
+        
+        <br>
+        <br>
+      </div>
+      <div id="Pretoria" hidden>
+        <h2 style="text-align: center;"> PRETORIA</h2>
+        <p>
+          <table style="border: none;">
+         
+            <tr>
+              <td>
+                <p style="font-size: large;">
+          ABSA
+          <br>
+          ACCOUNT NO: 9164642662
+          <br>
+
+          BRANCH: 632005
+          <br>
+
+          REF: NAME, SURNAME & ZONE
+        </p>
+      </td>
+      <td>
+        <img src="assets/PTA Giving.PNG" style="float: right; height: 300px;">
+
+      </td>
+      
+    </tr>
+  </table>
+  <br>
+  <br>
+      </div>
+      <div id="Johannesburg" hidden>
+        <h2 style="text-align: center;"> JOHANNESBURG</h2>
+        <table style="border: none;">
+         
+          <tr>
+            <td>
+              <p style="font-size: large;">           
+          ABSA
+          <br>
+          ACCOUNT NO: 9257341989
+          <br>
+
+          BRANCH: 632005
+          <br>
+
+          REF: NAME, SURNAME & ZONE
+        </p>
+      </td>
+      <td>
+        <img src="assets/JHB Giving.PNG" style="float: right; height: 300px;">
+
+      </td>
+      
+    </tr>
+  </table>
+  <br>
+  <br>
+      </div>
+    </nb-card>
+    </div>
+
+  </form>
+</nb-card-body>
+</nb-card>
+</nb-layout-column>
+</nb-layout>
+

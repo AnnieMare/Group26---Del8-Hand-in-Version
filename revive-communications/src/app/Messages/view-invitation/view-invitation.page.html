@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    
+    <ion-thumbnail style="margin-left:45%; " >
+      <ion-img  src="https://jpitwebdev.co.za/crc/wp-content/uploads/2019/11/crc-logo-menu-retina-white.png"></ion-img>
+    </ion-thumbnail>
+    
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title style="text-align: center; margin: 0.5em" color="primary">Invitations</ion-title>
+
+  <ion-list >
+    <ion-card *ngFor="let a of Invitation">
+     
+        <ion-card-title style="text-align: center; margin: 0.5em">{{a.Summary}}</ion-card-title>
+        <ion-card-content>
+          <ion-item>
+            <p>
+              {{a.InvitationDetail}}
+            </p>
+          </ion-item>
+        <ion-item>
+        <p><strong>Date: </strong>{{a.InvitationDate}}</p>
+      </ion-item>
+    <ion-item>
+        <p><strong>Time:</strong> {{a.StartTime}} - {{a.EndTime}}</p>
+      </ion-item>
+    <ion-item>
+      <ion-button id="inv-button" (click)="onDismiss(a)">Dismiss</ion-button>
+    </ion-item>
+    </ion-card-content>
+    </ion-card>
+  
+  
+  </ion-list>
+</ion-content>

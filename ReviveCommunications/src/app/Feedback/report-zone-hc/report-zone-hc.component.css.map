@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACF,MAAM,EAAE,MAAM;EACpB,KAAK,EAAE,KAAK;CACb;;AACD,AAAA,UAAU,CAAC,KAAK,CAAA;EACZ,OAAO,EAAE,YAAY;EACrB,UAAU,EAAE,IAAI;EAChB,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "report-zone-hc.component.scss"
+    ],
+    "names": [],
+    "file": "report-zone-hc.component.css"
+}

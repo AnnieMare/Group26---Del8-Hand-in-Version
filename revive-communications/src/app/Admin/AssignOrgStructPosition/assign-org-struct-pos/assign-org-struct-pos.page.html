@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary" style="height: 45px;">Organisational structure <br>position</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div style="text-align: right;">
+  <ion-button fill="outline">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+</div>
+
+<ion-item>
+  <ion-icon name="person-outline" slot="start"></ion-icon>
+  <ion-label>Ndlali Ledwaba</ion-label>
+
+</ion-item>
+  <br>
+  <ion-item>
+    <ion-label>Organisational Group</ion-label>
+    <ion-select placeholder="Select Group">
+      <ion-select-option>Kids Church</ion-select-option>
+      <ion-select-option>Intercession</ion-select-option>
+      <ion-select-option>Street Ministry</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <br>
+  <ion-button fill="outline" expand="block">
+    <ion-icon name="people-outline" slot="start"></ion-icon>
+    Assign to group
+  </ion-button>
+</ion-content>

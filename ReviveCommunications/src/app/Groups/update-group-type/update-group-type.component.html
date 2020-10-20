@@ -1,0 +1,72 @@
+<nb-layout>
+    
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+        <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+        <div class="header-container">
+        <nb-actions size="medium"  >
+           <nb-action icon="email-outline"
+                     
+                     title="Invitations"
+                     link="/ViewInvitation"
+                     >
+          </nb-action>
+          <nb-action icon="message-circle-outline"
+                     title="Announcements"
+                     link="/ViewAnnouncement">
+          </nb-action>
+          <nb-action id="user">
+            <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+          </nb-action>
+          <nb-action>
+              <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+          </nb-action>
+         </nb-actions>
+        </div>
+  
+        <a href="http://localhost:8080/Updategrouptype.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+  
+      </nb-layout-header>
+  
+      <nb-sidebar state="compacted">
+              <nb-menu [items]="items"></nb-menu>
+      </nb-sidebar>
+  
+      <!-- nav bar end -->
+      <nb-layout-column class="colored-column-basic">
+
+<form #UpdateGroupType="ngForm" (ngSubmit)="onSubmit(UpdateGroupType.value)">
+    <nb-card>
+        <nb-card-header>
+            <h1 style="text-align: center;">Update Group Type</h1>
+        </nb-card-header>
+        <nb-card-body style="align-content: center; text-align: center;" >
+            <label style="margin-right: 215px;">Group Name:</label>
+            <input nbInput type="text" name="GroupTypeName" style="width: 200px; margin:1em;" shape="rectangle" [(ngModel)]="GroupType.GroupTypeName">
+            <input nbInput type="text" name="GroupTypeID" style="width: 200px; margin:1em;" shape="rectangle" hidden [(ngModel)]="GroupType.GroupTypeID">
+        </nb-card-body>
+        <nb-card-footer style="align-content: center; text-align: center;">
+            <button nbButton style="margin: 15px;">Submit</button><button nbButton type="button" style="margin: 15px;" routerLink="/ViewGroupType">Back</button>
+        </nb-card-footer>
+    </nb-card>
+</form>
+</nb-layout-column>
+</nb-layout>
+<!--<form #updatedDiscipleship="ngForm" (ngSubmit)="onSubmit(updatedDiscipleship.value)">
+
+<nb-card>
+  <nb-card-header>Update Discipleship Module</nb-card-header>
+  <nb-card-body *ngIf="disc">
+    <input type="text" name="DiscipleshipID" [(ngModel)]="disc.DiscipleshipID"  required hidden  nbInput  shape="rectangle" >
+  <label>Discipleship Description</label>
+  <input type="text" name="DiscipleshipDescription"  required [(ngModel)]="disc.DiscipleshipDescription" style="width: 200px; margin:1em" nbInput  shape="rectangle" placeholder="eg. Spiritual Gifts">
+  </nb-card-body>
+  <nb-card-footer>
+  <button nbButton type="submit" [disabled]= "updatedDiscipleship.invalid" status="basic">Submit</button>
+  <button  nbButton type="button" (click)="open()" status="basic">Cancel</button>
+</nb-card-footer>
+
+</nb-card>
+</form>-->
+
+

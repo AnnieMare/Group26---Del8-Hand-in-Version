@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Daily UI | #001 - Sign Up</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+   body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: rgba(107, 75, 239, 0.73);
+}
+
+.active {
+  background-color: #4CAF50;
+}
+.button5 {border-radius: 50%;}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body class="align">
+    
+    <ul style="text-align: right;">
+        <li><a (click)="Login()">Login</a></li>
+        <li><a href="#home">Register</a></li>
+        <li><a routerLink="/SalvationForm">Salvation</a></li>
+        <li><a href="#news">Re-activate</a></li>
+        <li><a href="https://church.crc.org.za/">About Us</a></li>
+      </ul>
+
+      <div class="grid align__item" *ngIf="startCard">
+        <div class="register">
+            <img src="assets/CRC(No Background).png" style="width: 250px; height: 250px;"><br>
+            <h1 style="color:rgb(123, 231, 197,  0.73)">Welcome to<br>
+            Christian Revival Church (CRC) Main</h1>
+            <div class="form__field">
+              
+              <a (click)="getStarted()" ><input type="submit" value="Get Started" style="background-color:rgb(123, 231, 197,  0.73) "></a>
+              </div>
+        </div>
+    
+      </div>
+    
+    <div style="width: 1000px; margin-left: 475px; color: white" class="grid align__item" *ngIf="card">
+      <div class="card-row">
+      <div class="card-col">
+      <a (click)="Login()">
+      <nb-card accent="info" style="width: 375px; height: 240px;" class="register">
+        <nb-card-header><h3>Login</h3></nb-card-header>
+        <nb-card-body>
+          Click here to login.
+        </nb-card-body>
+      </nb-card>
+    </a>
+    </div>
+    <br>
+    <div class="card-col">
+      <nb-card accent="info" style="width: 375px;" class="register">
+        <nb-card-header><h3>Register</h3></nb-card-header>
+        <nb-card-body>
+          Click here to register and become a Member today.
+        </nb-card-body>
+      </nb-card>
+      </div>
+      </div>
+      <br>
+      <div class="card-row">
+      <div class="card-col">
+        <a routerLink="/SalvationForm">
+      <nb-card accent="info" style="width: 375px;" class="register">
+        <nb-card-header><h3>Salvation</h3></nb-card-header>
+        <nb-card-body>
+         Click here to fill in the Salvation form and be saved. 
+        </nb-card-body>
+      </nb-card>
+      </a>
+      </div>
+      <div class="card-col">
+      <nb-card accent="info" style="width: 375px;" class="register">
+        <nb-card-header><h3>Re-register</h3></nb-card-header>
+        <nb-card-body >
+          De-activated your account? Click here to re-activate.
+        </nb-card-body>
+      </nb-card>
+      </div>
+      </div>
+      <br>
+      <div class="card-row">
+        <div class="card-col">
+        <a href="https://church.crc.org.za/">
+        <nb-card accent="info" style="width: 765px;" class="register">
+          <nb-card-header><h3>About Us</h3></nb-card-header>
+          <nb-card-body>
+           Click here to found out more today.
+          </nb-card-body>
+        </nb-card></a>
+        </div>
+        </div>
+    </div>
+
+  <div class="grid align__item" *ngIf="login">
+    
+    <div class="register">
+
+      <img src="assets/CRC(No Background).png" style="width: 100px; height: 100px;">
+      <h2 style="color:rgb(123, 231, 197,  0.73) ">Login</h2>
+
+      <form action="" method="post" class="form">
+
+        <div class="form__field">
+          <input type="email" placeholder="info@mailaddress.com" style="background-color:rgb(255, 255, 255,  0.73) ">
+        </div>
+
+        <div class="form__field">
+          <input type="password" placeholder="••••••••••••" style="background-color:rgb(255, 255, 255,  0.73) ">
+        </div>
+
+        <div class="form__field">
+          <input type="submit" value="Login" style="background-color:rgb(123, 231, 197,  0.73) ">
+        </div>
+        <div class="form__field">
+          <label>Don't remember you password? Click here.</label>
+          <input type="submit" value="Reset password" style="background-color:rgb(123, 231, 197,  0.73) ">
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>
+

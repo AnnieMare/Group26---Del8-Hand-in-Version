@@ -1,0 +1,112 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+<form #FollowUp="ngForm" (ngSubmit)="onSubmit(FollowUp.value)">
+
+  <nb-card *ngFor="let p of followUpList">
+      <nb-card-body style="height: 50px;">
+        <table style="border: white;">
+          <tbody>
+            <tr>
+              <td style="width: 50%;">
+                <div style="padding: 0px; height: 250px; width: 250px; float: right;">
+                  <canvas
+                      baseChart
+                      [data]="pieChartData"
+                      [labels]="pieChartLabels"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      [plugins]="pieChartPlugins"
+                      [colors]="pieChartColors"
+                      [legend]="pieChartLegend" width="250" height="250">
+                  </canvas>
+              </div>
+              </td>
+              <td style="width: 50%;">
+                <label >Total follow-ups:</label><label style="margin: 15px;">{{TotalFollowUps}}</label><br><br>
+                <label >Completed Number of Follow-ups:</label><label style="margin: 5px;">{{MembersProgress.Completed}}</label><br><br>
+                <label >Number of follow-ups remaining:</label><label style="margin: 15px;">{{MembersProgress.Remaining}}</label><br><br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <label style="color: tomato; margin-left:25% " >Only do follow up for the top member. If they dont answer select "Complete"</label>
+      </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-header>Follow Up on Discipleship</nb-card-header>
+    <a href="http://localhost:8080/Follow-Up.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+
+    <nb-card-body>
+
+      <table  *ngFor="let p of followUpList">
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Cell Number</th>
+          <th>Discipleship</th>
+          <th></th>
+        </tr>
+
+        <tr *ngFor="let x of p.MemberList, let i=index">
+          <td>{{x.PersonName}}</td>
+          <td>{{x.PersonSurname}}</td>
+          <td>{{x.PersonNumber}}</td>
+          <input [(ngModel)]="x.PersonID" [name]=" 'Person' +  [i]" hidden>
+          <td>
+            <nb-accordion>
+             <nb-accordion-item>
+            <nb-accordion-item-header>View</nb-accordion-item-header>
+            <nb-accordion-item-body  *ngFor="let uc of x.Discipleships, let i=index">
+              <nb-radio-group (click)="changeSelection(uc)">
+                <nb-radio   value="{{uc.DiscipleshipID}}" >{{uc.Discipleship[0].DiscipleshipDescription}}</nb-radio>
+              </nb-radio-group>
+                  <!-- <nb-checkbox status="primary"  #checked="ngModel" name="checked" [(ngModel)]="uc.isChecked"  (change)="changeSelection(x.Discipleships)">{{uc.Discipleship[0].DiscipleshipDescription}}</nb-checkbox> -->
+
+            </nb-accordion-item-body>
+
+           </nb-accordion-item>
+          </nb-accordion>
+          <input type="text" name="Person_Discipleship" hidden [(ngModel)]="Person_Discipleship">
+        </td>
+          <td style="text-align: center;"><button nbButton size="small" >Completed<nb-icon icon="checkmark-outline"></nb-icon></button></td>
+        </tr>
+      </table>
+    </nb-card-body>
+  </nb-card>
+    </form>
+  </nb-layout-column>
+
+  </nb-layout>

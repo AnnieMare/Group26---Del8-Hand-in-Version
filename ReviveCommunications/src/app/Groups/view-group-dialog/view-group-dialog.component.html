@@ -1,0 +1,38 @@
+<nb-layout-column> 
+    <form [formGroup]="updateGroup">
+    <nb-card>
+
+            <nb-card-header>View Group
+                <a href="http://localhost:8080/ViewOrganisationalGroup.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+            </nb-card-header>
+            <nb-card-body>
+                <input type="text" nbInput formControlName="OrgGroupID" hidden>
+
+                <label>Select a group:</label>
+                <nb-select  formControlName="GroupTypeID" placeholder="Select a Group" disabled>
+                    <nb-option *ngFor="let grouptype of grouptypes" [value]="grouptype.GroupTypeID">{{grouptype.GroupTypeName}}</nb-option>
+                </nb-select>
+                <br><br>
+
+                <label style="margin-right: 30px;">Group Name:</label>
+                <input type="text"  formControlName="Description" nbInput placeholder="Group Name"  style="margin-right: 150px;" disabled>
+                <br><br>
+
+                <label style="margin-right: 60px;">Address:</label>
+                <input type="text"  formControlName="Address" nbInput placeholder="Address"  style="margin-right: 150px;" disabled>
+                <br><br>
+                <label style="margin-right: 68px;">Suburb:</label>
+                <nb-select   formControlName="SuburbID" placeholder="Suburb" disabled>
+                    <nb-option *ngFor="let s of suburbs" [value]="s.SuburbID">{{s.SuburbName}}</nb-option>
+                </nb-select>
+                <br><br>
+
+                <label style="margin-right: 87px;">Size:</label>
+                <input type="number"  formControlName="Size" nbInput placeholder="Members" disabled>
+                <br><br>
+                <button nbButton status="basic">Cancel</button>
+            </nb-card-body>
+
+    </nb-card>
+  </form>
+</nb-layout-column>

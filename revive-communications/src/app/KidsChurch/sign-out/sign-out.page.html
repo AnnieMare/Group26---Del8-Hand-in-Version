@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>  
+    <ion-button slot="end" routerLink="/view-announcement">
+      <ion-icon name="notifications-outline" size="medium" ></ion-icon>
+    </ion-button>
+    <ion-button slot="end" routerLink="/view-invitation">
+      <ion-icon name="mail-unread-outline" size="medium" ></ion-icon>
+    </ion-button>
+  </ion-toolbar><br>
+  <ion-toolbar>
+    <ion-title slot="start" size="medium" color="primary">Kids Church Sign-out
+      <a href="http://localhost:8080/Sign-outChild.html"><ion-icon style="float: right; color: black; font-size: x-large;" name="help-circle-outline"></ion-icon></a>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-item>
+    <ion-icon name="home-outline" slot="start"></ion-icon>
+    <ion-label> Kids Church: CRC Main</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="calendar-outline" slot="start" ></ion-icon>
+    <ion-label> Date: {{today | date:'MMMM d, yyyy'}}</ion-label>
+  </ion-item>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Child sign-out</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div style='text-align: center;'>
+      <p style="color: teal;" *ngIf="showList == false"> {{Message}}</p></div>
+      <ion-list style="background-color: transparent;" *ngIf="showList == true">
+        <ion-item *ngFor="let child of Children; let i = index" style="background-color: transparent;">
+          <ion-checkbox (click)="changeSelection(child.ChildID, i)"></ion-checkbox>
+          <ion-label style="margin-left: 0.5em">{{child.Name}} {{child.Surname}} <br> Group: {{child.KidsChurchName}}</ion-label>
+        </ion-item>
+      </ion-list><br>
+      <ion-button expand="block" type="submit" color="primary" (click)="checkIn()" *ngIf="showList == true">Sign-out</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

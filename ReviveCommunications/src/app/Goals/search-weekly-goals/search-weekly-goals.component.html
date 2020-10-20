@@ -1,0 +1,342 @@
+<nb-layout>
+  
+  <!-- nav bar start -->
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+    <div class="header-container">
+    <nb-actions size="medium"  >
+       <nb-action icon="email-outline"
+                 
+                 title="Invitations"
+                 link="/ViewInvitation"
+                 >
+      </nb-action>
+      <nb-action icon="message-circle-outline"
+                 title="Announcements"
+                 link="/ViewAnnouncement">
+      </nb-action>
+      <nb-action id="user">
+        <nb-user name="{{Person.Name}} {{Person.Surname}}" ></nb-user>
+      </nb-action>
+      <nb-action>
+          <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+      </nb-action>
+     </nb-actions>
+    </div>
+
+
+  </nb-layout-header>
+
+  <nb-sidebar state="compacted">
+          <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <!-- nav bar end -->
+  <nb-layout-column class="colored-column-basic">
+    <div>
+      <nb-card>
+        <nb-card-header><h2>Weekly Goals</h2></nb-card-header>
+        <nb-card-body>
+          <form [formGroup]="goalsPost" (ngSubmit)="displayGoal(goalsPost.value)">
+          <label style="margin-right: 135px;">Goal</label><nb-select placeholder="Select Goal" formControlName="goalDescription">
+              <nb-option *ngFor="let goalAccess of dropdownList" [(value)]="goalAccess.GoalAccessID">{{goalAccess.Description}}</nb-option>
+
+            </nb-select>
+            <button class="next-button" nbButton type="submit" style="margin-left:10px">Go</button>
+          </form>
+
+            <div *ngIf="HCAtt">
+          <div> <h3>Homecell Attendance Goals</h3></div>
+       <div>
+              <button nbButton style=" margin-right: 10px;" routerLink="/SetHomecellAttWeeklyGoal" *ngIf="HCATTMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+              <button nbButton style=" margin-right: 10px;" (click)="Maintain()"*ngIf="HCATTMAintain" ><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+              <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="HCATTFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+            </div> 
+            <br>
+          <table>
+            <tr style="text-align: center;">
+              <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+              <th>Overseer</th>
+              <th>HC-L</th>
+              <th>HC-L <br> Feedback</th>
+              <th>HC-M</th>
+              <th>HC-M <br> Feedback</th>
+              <th>HC-V </th>
+              <th>HC-V <br> Feedback</th>
+              <th>HC-FTV</th>
+              <th>HC-FTV <br> Feedback</th>
+              <th>HC-S</th>
+              <th style="width:25px">HC-S <br> Feedback</th>
+              <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+            </tr>
+            <tr *ngFor="let goal of Goals">
+              <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteHomecellAttGoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+              <button nbButton (click)="submitData(goal)" routerLink="/UpdateHomecellAttWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+              <td>{{goal.Overseer}}</td>
+              <td>{{goal.Leaders}}</td>
+              <td style="background-color: teal;width:25px">{{goal.FBLeaders}}</td>
+              <td>{{goal.Members}}</td>
+              <td style="background-color: teal;width:25px">{{goal.FBMembers}}</td>
+              <td>{{goal.Visitors}}</td>
+              <td style="background-color: teal;width:25px">{{goal.FBVisitors}}</td>
+              <td>{{goal.FirstTimeVisitors}}</td>
+              <td style="background-color: teal;width:25px">{{goal.FBFirstTimeVisitors}}</td>
+              <td>{{goal.Salvations}}</td>
+              <td style="background-color: teal; width:25px">{{goal.GBSalvations}}</td>
+              <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ReportOnHCAtt/{{goal.HomecellAttendanceGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+             </tr>
+             </table>
+              </div>
+
+              <!---->
+              <div *ngIf="ZHCAtt">
+                <div> <h3>Zone Homecell Attendance Goals</h3></div>
+             <div>
+                    <button nbButton style=" margin-right: 10px;" routerLink="/SetWeeklyGoal" *ngIf="ZHCATTMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                    <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="ZHCATTMAintain" ><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                    <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="ZHCATTFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                  </div> 
+                  <br>
+                <table>
+                  <tr style="text-align: center;">
+                    <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                    <th>Overseer</th>
+                    <th>HC-L</th>
+                    <th>HC-L <br> Feedback</th>
+                    <th>HC-M</th>
+                    <th>HC-M <br> Feedback</th>
+                    <th>HC-V </th>
+                    <th>HC-V <br> Feedback</th>
+                    <th>HC-FTV</th>
+                    <th>HC-FTV <br> Feedback</th>
+                    <th>HC-S</th>
+                    <th style="width:25px">HC-S <br> Feedback</th>
+                    <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                  </tr>
+                  <tr *ngFor="let goal of ZHomecellGoals">
+                    <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteHomecellAttGoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                    <button nbButton (click)="submitData(goal)" routerLink="/UpdateHomecellAttWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                    <td>{{goal.Overseer}}</td>
+                    <td>{{goal.Leaders}}</td>
+                    <td style="background-color: teal;width:25px">{{goal.FBLeaders}}</td>
+                    <td>{{goal.Members}}</td>
+                    <td style="background-color: teal;width:25px">{{goal.FBMembers}}</td>
+                    <td>{{goal.Visitors}}</td>
+                    <td style="background-color: teal;width:25px">{{goal.FBVisitors}}</td>
+                    <td>{{goal.FirstTimeVisitors}}</td>
+                    <td style="background-color: teal;width:25px">{{goal.FBFirstTimeVisitors}}</td>
+                    <td>{{goal.Salvations}}</td>
+                    <td style="background-color: teal; width:25px">{{goal.FBSalvations}}</td>
+                    <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ReportOnHCAtt" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                   </tr>
+                   </table>
+                    </div>
+      
+
+      <!---->
+      <div *ngIf="ChurchCAtt">
+        <div> <h3>Church Attendance Goals</h3></div>
+     <div>
+            <button nbButton style=" margin-right: 10px;" routerLink="/SetChurchAttWeeklyGoal" *ngIf="CATTMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+            <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="CATTMAintain" ><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+            <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="CATTFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+          </div> 
+          <br>
+        <table>
+          <tr style="text-align: center;">
+            <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+            <th>Overseer</th>
+            <th>HC-L</th>
+            <th>HC-L <br> Feedback</th>
+            <th>HC-M</th>
+            <th>HC-M <br> Feedback</th>
+            <th>HC-V </th>
+            <th>HC-V <br> Feedback</th>
+            <th>HC-FTV</th>
+            <th>HC-FTV <br> Feedback</th>
+            <th>HC-S</th>
+            <th style="width:25px">HC-S <br> Feedback</th>
+            <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+          </tr>
+          <tr *ngFor="let goal of ChurchGoals">
+            <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteChurchAttGoalgoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+            <button nbButton (click)="submitData(goal)" routerLink="/UpdateChurchWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+            <td>{{goal.Overseer}}</td>
+            <td>{{goal.Leader}}</td>
+            <td style="background-color: teal;width:25px">{{goal.FBLeader}}</td>
+            <td>{{goal.Member}}</td>
+            <td style="background-color: teal;width:25px">{{goal.FBMember}}</td>
+            <td>{{goal.Visitors}}</td>
+            <td style="background-color: teal;width:25px">{{goal.FBVisitors}}</td>
+            <td>{{goal.FirstTimeVisitors}}</td>
+            <td style="background-color: teal;width:25px">{{goal.FBFirstTimeVisitors}}</td>
+            <td>{{goal.Salvations}}</td>
+            <td style="background-color: teal; width:25px">{{goal.FBSalvations}}</td>
+            <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ReportOnChurchAtt/{{goal.ChurchAttGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+           </tr>
+           </table>
+            </div>
+
+            <!---->
+            <div *ngIf="ZChurchCAtt">
+              <div> <h3>Zone Church Attendance Goals</h3></div>
+           <div>
+                  <button nbButton style=" margin-right: 10px;" routerLink="/SetZoneChurchAttWeeklyGoal" ><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                  <button nbButton style=" margin-right: 10px;" (click)="Maintain()" ><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                  <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" ><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                </div> 
+                <br>
+              <table>
+                <tr style="text-align: center;">
+                  <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                  <th>Overseer</th>
+                  <th>HC-L</th>
+                  <th>HC-L <br> Feedback</th>
+                  <th>HC-M</th>
+                  <th>HC-M <br> Feedback</th>
+                  <th>HC-V </th>
+                  <th>HC-V <br> Feedback</th>
+                  <th>HC-FTV</th>
+                  <th>HC-FTV <br> Feedback</th>
+                  <th>HC-S</th>
+                  <th style="width:25px">HC-S <br> Feedback</th>
+                  <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                </tr>
+                <tr *ngFor="let goal of ZChurchGoals">
+                  <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteZoneChurchAttGoalgoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                  <button nbButton (click)="submitData(goal)" routerLink="/UpdateZoneChurchAttWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                  <td>{{goal.Overseer}}</td>
+                  <td>{{goal.Leader}}</td>
+                  <td style="background-color: teal;width:25px">{{goal.FBLeader}}</td>
+                  <td>{{goal.Member}}</td>
+                  <td style="background-color: teal;width:25px">{{goal.FBMember}}</td>
+                  <td>{{goal.Visitors}}</td>
+                  <td style="background-color: teal;width:25px">{{goal.FBVisitors}}</td>
+                  <td>{{goal.FirstTimeVisitors}}</td>
+                  <td style="background-color: teal;width:25px">{{goal.FBFirstTimeVisitors}}</td>
+                  <td>{{goal.Salvations}}</td>
+                  <td style="background-color: teal; width:25px">{{goal.FBSalvations}}</td>
+                  <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ZoneChurchAttendance/{{goal.ZoneChurchAttGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                 </tr>
+                 </table>
+                  </div>
+      
+                  <!---->
+                  <div *ngIf="Disc">
+                    <div> <h3>Discipleship Goal</h3></div>
+                 <div>
+                        <button nbButton style=" margin-right: 10px;" routerLink="/SetDiscipleshipWeeklyGoal" *ngIf="DiscMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                        <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="DiscMAintain"><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                        <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()"*ngIf="DiscFeed" ><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                      </div> 
+                      <br>
+                    <table>
+                      <tr style="text-align: center;">
+                        <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                        <th>Overseer</th>
+                        <th>Discipleship Type</th>
+                        <th>Attendance</th>
+                        <th>Attendance Feedback</th>
+                        <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                      </tr>
+                      <tr *ngFor="let goal of DiscipleshipGoals">
+                        <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteDiscipleshipGoalgoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                        <button nbButton (click)="submitData(goal)" routerLink="/UpdateDiscipleshipWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                        <td>{{goal.Overseer}}</td>
+                        <td>{{goal.DiscipleshipType}}</td>
+                        <td>{{goal.Attendance}}</td>
+                        <td style="background-color: teal;width:25px">{{goal.FBAttendance}}</td>
+                        <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/DiscReport/{{goal.DiscipleshipGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                       </tr>
+                       </table>
+                        </div>
+
+                          <!---->
+                  <div *ngIf="NMO">
+                   <div> <h3>New Member Orientation Goal</h3></div>
+                 <div>
+                        <button nbButton style=" margin-right: 10px;" routerLink="/SetNMOWeeklyGoal" *ngIf="NMOMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                        <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="NMOMAintain"><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                        <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="NMOFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                      </div> 
+                      <br>
+                    <table>
+                      <tr style="text-align: center;">
+                        <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                        <th>Overseer</th>
+                        <th>Monthly Total</th>
+                        <th>Monthly Total Feedback</th>
+                        <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                      </tr>
+                      <tr *ngFor="let goal of NMOGoals">
+                        <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteHomecellAttGoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                        <button nbButton (click)="submitData(goal)" routerLink="/UpdateNMOWeeklyGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                        <td>{{goal.Overseer}}</td>
+                        <td>{{goal.MonthTotal}}</td>
+                        <td style="background-color: teal;width:25px">{{goal.FBMonthTotal}}</td>
+                        <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/NMOReport/{{goal.NMOGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                       </tr>
+                       </table>
+                        </div>
+
+                                    <!---->
+                  <div *ngIf="struct">
+                    <div> <h3>Structure Growth Goal</h3></div>
+                 <div>
+                        <button nbButton style=" margin-right: 10px;" routerLink="/SetStructureGrowthGoal" *ngIf="StructMAintain"><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                        <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="StructMAintain"><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                        <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="StructFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                      </div> 
+                      <br>
+                    <table>
+                      <tr style="text-align: center;">
+                        <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                        <th>Overseer</th>
+                        <th>Members</th>
+                        <th>Members Feedback</th>
+                        <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                      </tr>
+                      <tr *ngFor="let goal of StructureGoals">
+                        <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteStructureGrowthGoalgoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                        <button nbButton (click)="submitData(goal)" routerLink="/UpdateStructureGrowthGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                        <td>{{goal.Overseer}}</td>
+                        <td>{{goal.Members}}</td>
+                        <td style="background-color: teal;width:25px">{{goal.FBMembers}}</td>
+                        <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ReportStructureGowth/{{goal.StructureGrowthGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                       </tr>
+                       </table>
+                        </div>
+
+                   <!---->
+                  <div *ngIf="Zone">
+                    <div> <h3>Zone Growth Goal</h3></div>
+                 <div>
+                        <button nbButton style=" margin-right: 10px;" routerLink="/SetZoneGrowthGoal" *ngIf="ZoneMAintain" ><nb-icon icon="plus-outline" ></nb-icon> Create</button>
+                        <button nbButton style=" margin-right: 10px;" (click)="Maintain()" *ngIf="ZoneMAintain"><nb-icon icon="settings-2-outline" ></nb-icon> Maintain</button>           
+                        <button nbButton style="margin-right: 10px; float: right;" (click)="Feedback()" *ngIf="ZoneFeed"><nb-icon icon="file-text-outline" ></nb-icon> Provide Feedback</button>
+                      </div> 
+                      <br>
+                    <table>
+                      <tr style="text-align: center;">
+                        <th *ngIf="enableMaintain" style="text-align: center;">Maintain</th>
+                        <th>Overseer</th>
+                        <th>Members</th>
+                        <th>Members Feedback</th>
+                        <th *ngIf="enableFeedback" style="text-align: center;">Feedback</th>
+                      </tr>
+                      <tr *ngFor="let goal of ZoneGoals">
+                        <td style="text-align: center;" *ngIf="enableMaintain"><button nbButton (click)="deleteZoneGrowthGoalgoalID(goal)" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Delete" nbTooltipPlacement="top" style="margin-right: 15px;"><nb-icon icon="trash-2-outline"  ></nb-icon></button>
+                        <button nbButton (click)="submitData(goal)" routerLink="/UpdateZoneGrowthGoal" [disabled]="!goal.GoalFeedbackExists" nbTooltip="Update" nbTooltipPlacement="top"><nb-icon icon="edit-outline" ></nb-icon></button></td>
+                        <td>{{goal.Overseer}}</td>
+                        <td>{{goal.Members}}</td>
+                        <td style="background-color: teal;width:25px">{{goal.FBMembers}}</td>
+                        <td style="text-align: center;" *ngIf="enableFeedback"><button nbButton routerLink="/ZoneGrowth/{{goal.ZonegrowthGoalID}}" nbTooltip="Provide feedback" nbTooltipPlacement="top" [disabled]="!goal.GoalFeedbackExists" ><nb-icon icon="file-text-outline" ></nb-icon>Feedback</button></td>
+                       </tr>
+                       </table>
+                        </div>
+                      </nb-card-body>
+                    </nb-card>
+                    </div>
+      
+  </nb-layout-column>
+</nb-layout>

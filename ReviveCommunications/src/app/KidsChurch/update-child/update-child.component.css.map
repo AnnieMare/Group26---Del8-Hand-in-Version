@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,SAAS,EAAE,OAAO;EAClB,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,KAAK,CAAC;EACF,YAAY,EAAE,IAAI;CACrB;;AAED,AAAA,KAAK,CAAC;EACF,MAAM,EAAE,IAAI;CACf",
+    "sources": [
+        "update-child.component.scss"
+    ],
+    "names": [],
+    "file": "update-child.component.css"
+}

@@ -1,0 +1,109 @@
+<nb-layout>
+
+    <!-- nav bar start -->
+    <nb-layout-header fixed>
+      <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+      <div class="header-container">
+      <nb-actions size="medium"  >
+         <nb-action icon="email-outline"
+
+                   title="Invitations"
+                   link="/ViewInvitation"
+                   >
+        </nb-action>
+        <nb-action icon="message-circle-outline"
+                   title="Announcements"
+                   link="/ViewAnnouncement">
+        </nb-action>
+        <nb-action id="user">
+          <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+        </nb-action>
+        <nb-action>
+            <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+        </nb-action>
+       </nb-actions>
+      </div>
+
+
+    </nb-layout-header>
+
+    <nb-sidebar state="compacted">
+            <nb-menu [items]="items"></nb-menu>
+    </nb-sidebar>
+
+    <!-- nav bar end -->
+    <nb-layout-column class="colored-column-basic">
+
+<h3>Organisational Individual Positions Access</h3>
+
+<!-- <input nbInput type="text" placeholder="Search..."> -->
+  <button nbButton status="basic" style="float: right;" routerLink="/AddOrgIndivPos">+</button>
+<table class="table">
+  <thead>
+      <tr>
+
+          <th>ID</th>
+          <th>Description</th>
+          <th>Use cases</th>
+          <th>Goal Access</th>
+          <th></th>
+          <th></th>
+          <th></th>
+
+      </tr>
+  </thead>
+
+      <tbody  *ngFor="let oip of OrgIndivPosList, let i=index ">
+        <tr>
+          <td>{{oip.OrgIndivPosID}}</td>
+          <td >{{oip.Decription}}</td>
+
+          <!-- Use cases -->
+        <td>
+
+
+           <nb-accordion>
+            <nb-accordion-item>
+           <nb-accordion-item-header>View</nb-accordion-item-header>
+
+           <nb-accordion-item-body >
+            <nb-list>
+          <nb-list-item *ngFor="let uc of oip.Use_Cases[i]" >
+                {{uc.UCName}}
+              </nb-list-item>
+            </nb-list>
+
+             <!-- <div *ngFor="let uc of oip.Use_Cases">
+             <label>{{uc.UCName}}</label>
+            </div> -->
+           </nb-accordion-item-body>
+
+          </nb-accordion-item >
+        </nb-accordion>
+      </td>
+      <td>
+          <!-- Goals -->
+        <nb-accordion>
+          <nb-accordion-item>
+         <nb-accordion-item-header>View</nb-accordion-item-header>
+
+         <nb-accordion-item-body >
+          <nb-list  >
+            <nb-list-item *ngFor="let g of oip.Goal_Access[i]" >
+              {{g.GoalName}}
+            </nb-list-item>
+          </nb-list>
+           <!-- <label>{{g.GoalName}}</label> -->
+         </nb-accordion-item-body>
+
+        </nb-accordion-item >
+      </nb-accordion>
+    </td>
+      <td >
+          <td ><button nbButton ghost status="basic" size="large"><nb-icon icon="edit-2-outline" routerLink="/MaintainOrgIndivPos/{{oip.OrgIndivPosID}}" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button></td>
+          <td ><button nbButton ghost status="basic" type="button" size="large"><nb-icon icon="trash-2-outline"  (click)="onDelete(oip)" [options]="{ animation: { type: 'pulse' } }"></nb-icon></button></td>
+      </tr>
+
+      </tbody>
+</table></nb-layout-column>
+</nb-layout>

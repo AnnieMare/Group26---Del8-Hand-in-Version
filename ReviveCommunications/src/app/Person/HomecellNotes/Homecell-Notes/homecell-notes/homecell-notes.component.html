@@ -1,0 +1,91 @@
+<nb-layout>
+  
+  <!-- nav bar start -->
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><i class="nb-menu"><nb-icon icon="menu-outline" [options]="{ animation: { type: 'pulse' } }"></nb-icon></i></a>
+    <div class="header-container">
+    <nb-actions size="medium"  >
+       <nb-action icon="email-outline"
+                 
+                 title="Invitations"
+                 link="/ViewInvitation"
+                 >
+      </nb-action>
+      <nb-action icon="message-circle-outline"
+                 title="Announcements"
+                 link="/ViewAnnouncement">
+      </nb-action>
+      <nb-action id="user">
+        <nb-user name="{{Person.Name}} {{Person.Surname}}" (click)="setData(Person)" routerLink="/UpdatePerson"></nb-user>
+      </nb-action>
+      <nb-action>
+          <button type="button" nbButton class="btn btn-info" (click)="Logout()">Logout</button>
+      </nb-action>
+     </nb-actions>
+    </div>
+
+
+  </nb-layout-header>
+
+  <nb-sidebar state="compacted">
+          <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <!-- nav bar end -->
+  <nb-layout-column class="colored-column-basic">
+    <nb-card>
+      <nb-card-header>
+        <h1>Homecell Notes</h1>
+        <a href="http://localhost:8080/DownloadHomecellnotes.html"><nb-icon style="float: right; color: white; font-size: x-large;" nbTooltip="Help" nbTooltipPlacement="top" icon="question-mark-circle-outline"></nb-icon></a>
+      </nb-card-header>
+    <nb-card-body>
+      <div *ngIf="NoHomecellNotes != null" style="text-align: center; color: teal; margin-top: 25px; margin-bottom: 25px;">
+        <p>{{NoHomecellNotes}}</p>
+      </div>
+      <div *ngIf="NoHomecellNotes == null">
+      <div *ngIf="searchEnable">
+        <button style="background-color: transparent; border:none;float: right; color: white;" (click)="filterEnable()"><nb-icon icon="search-outline" ></nb-icon> Search</button>
+      </div>  
+        <br>
+        <div *ngIf="enableFilter">
+          <form [formGroup]="HomecellNotesSearch" (ngSubmit)="viewHomecellNotes(HomecellNotesSearch.value)"> 
+          <label style="margin-right: 60px;">Homecell Notes</label><nb-select placeholder="Select Homecell Notes" formControlName="HCNID">
+            <nb-option value="0">View All</nb-option>
+            <nb-option *ngFor="let HCNotes of HomecellNotesDropDown" [(value)]="HCNotes.HCNID">{{HCNotes.HomecellNotes}}</nb-option>
+          </nb-select> <button class="next-button" nbButton style="margin-right: 5px; margin-left: 15px;" type="submit">Search</button>
+        </form>
+        </div>
+        <br><br>
+      </div>
+      <div *ngIf="NoHomecellNotes == null">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th *ngIf="enableDelete"></th>
+                    <th>Date</th>
+                    <th>File Name</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let HCNotes of homecellNotes">
+                <tr>
+                  <td style="text-align: center;" *ngIf="enableDelete"><button style="background-color: transparent; border:none; color: white;" (click)="DeletePDF(HCNotes.HomecellNotes)"><nb-icon icon="trash-2-outline" ></nb-icon></button></td>
+                    <td>{{HCNotes.UploadDate}}</td>
+                    <td><nb-icon icon="file-text-outline"></nb-icon>{{HCNotes.HomecellNotes}}</td>
+                    <td style="text-align: left;" ><button style="background-color: transparent; border:none; color: white;" (click)="UploadPDF(HCNotes.HomecellNotes)"><nb-icon icon="download-outline" ></nb-icon></button></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+        <div style="float: right;">
+        <button class="next-button" nbButton style="margin-right: 5px;" (click)="deleteEnable()" *ngIf="deleteButton">Delete</button><button class="next-button" nbButton routerLink="/AddHomecellNotes" *ngIf="enableButtons">Upload</button>
+    </div>
+    
+    </nb-card-body>
+  </nb-card>
+</nb-layout-column>
+<nb-layout-footer fixed>
+  <img src="https://church.crc.org.za/assets/img/brand/black-with-text.png" style=" height: 30px;">
+  </nb-layout-footer>
+  
+  </nb-layout>
